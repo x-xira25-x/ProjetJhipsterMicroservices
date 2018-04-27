@@ -1,0 +1,7 @@
+Microservices application
+jhipster registry
+jwt authentification
+sql: Mysql pour dev et prod
+hazelcast implementation pour spring cache abstraction
+maven
+internalization support
