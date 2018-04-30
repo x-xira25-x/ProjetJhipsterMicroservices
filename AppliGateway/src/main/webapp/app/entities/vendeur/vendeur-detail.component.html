@@ -1,0 +1,46 @@
+
+<div *ngIf="vendeur">
+    <h2><span jhiTranslate="appliGatewayApp.vendeur.detail.title">Vendeur</span> {{vendeur.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.nom">Nom</span></dt>
+        <dd>
+            <span>{{vendeur.nom}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.prenom">Prenom</span></dt>
+        <dd>
+            <span>{{vendeur.prenom}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.adresse">Adresse</span></dt>
+        <dd>
+            <span>{{vendeur.adresse}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.npa">Npa</span></dt>
+        <dd>
+            <span>{{vendeur.npa}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.localite">Localite</span></dt>
+        <dd>
+            <span>{{vendeur.localite}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.vendeur.numTel">Num Tel</span></dt>
+        <dd>
+            <span>{{vendeur.numTel}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vendeur/'+ vendeur.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
