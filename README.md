@@ -2,15 +2,15 @@ Introduction
 
 Prérequis
 
-Installation
+Technologies utilisées
 
-Repertoire
 
-Démarrage rapide
+Modèle de données
+
 
 Fonctionnement
 
-Configuration
+Manuel d'utilisation
 
 
 
