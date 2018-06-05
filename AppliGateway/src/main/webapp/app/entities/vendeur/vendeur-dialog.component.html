@@ -30,7 +30,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.vendeur.prenom" for="field_prenom">Prenom</label>
             <input type="text" class="form-control" name="prenom" id="field_prenom"
-                [(ngModel)]="vendeur.prenom" required pattern="y"/>
+                [(ngModel)]="vendeur.prenom" required pattern="^[a-zA-Z0-9]*$"/>
             <div [hidden]="!(editForm.controls.prenom?.dirty && editForm.controls.prenom?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.prenom?.errors?.required" jhiTranslate="entity.validation.required">
@@ -55,7 +55,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.vendeur.localite" for="field_localite">Localite</label>
             <input type="text" class="form-control" name="localite" id="field_localite"
-                [(ngModel)]="vendeur.localite" required pattern="y"/>
+                [(ngModel)]="vendeur.localite" required pattern="^[a-zA-Z0-9]*$"/>
             <div [hidden]="!(editForm.controls.localite?.dirty && editForm.controls.localite?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.localite?.errors?.required" jhiTranslate="entity.validation.required">
