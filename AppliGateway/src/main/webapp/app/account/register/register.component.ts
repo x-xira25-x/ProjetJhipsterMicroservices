@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterViewInit, Renderer, ElementRef } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { JhiLanguageService } from 'ng-jhipster';
+import {JhiAlertService, JhiLanguageService} from 'ng-jhipster';
 
 import { Register } from './register.service';
-import { LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE } from '../../shared';
+import {LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE, UserService} from '../../shared';
+import {Client, ClientService} from "../../entities/client";
+import {TypeClient, TypeClientService} from "../../entities/type-client";
 
 @Component({
     selector: 'jhi-register',
@@ -20,19 +22,29 @@ export class RegisterComponent implements OnInit, AfterViewInit {
     registerAccount: any;
     success: boolean;
     modalRef: NgbModalRef;
+    client: Client;
+    typeclients: TypeClient[];
 
     constructor(
         private languageService: JhiLanguageService,
         private loginModalService: LoginModalService,
         private registerService: Register,
         private elementRef: ElementRef,
-        private renderer: Renderer
+        private renderer: Renderer,
+        private clientService: ClientService,
+        private userService: UserService,
+        private typeClientService: TypeClientService,
+        private jhiAlertService: JhiAlertService,
     ) {
     }
 
     ngOnInit() {
         this.success = false;
         this.registerAccount = {};
+        this.client = {};
+        this.typeClientService.query()
+            .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+
     }
 
     ngAfterViewInit() {
@@ -58,6 +70,23 @@ export class RegisterComponent implements OnInit, AfterViewInit {
 
     openLogin() {
         this.modalRef = this.loginModalService.open();
+    }
+    trackTypeClientByNom(index: number, item: TypeClient) {
+        return item.nom;
+    }
+
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
+    }
+    private onError(error: any) {
+        this.jhiAlertService.error(error.message, null, null);
     }
 
     private processError(response: HttpErrorResponse) {
