@@ -2,7 +2,8 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "com.mycompany.myapp",
-      "nativeLanguage": "en"
+      "nativeLanguage": "en",
+      "microservicePath": "../service1"
     },
     "jhipsterVersion": "4.14.3",
     "baseName": "AppliGateway",
