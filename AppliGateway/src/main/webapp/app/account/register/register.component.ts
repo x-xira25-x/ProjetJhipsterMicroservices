@@ -63,6 +63,21 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                 this.registerAccount.langKey = key;
                 this.registerService.save(this.registerAccount).subscribe(() => {
                     this.success = true;
+                    // retourne le user
+                    this.userService.find(this.registerAccount.login).subscribe(resp => {
+                        console.log('essai ' + resp.body.login);
+
+                        this.client.idUser = resp.body.id;
+                        console.log('id user client :' + this.client.idUser);
+                        // appeler la sauvegarde du client
+
+                        console.log('appel create client');
+                        this.clientService.create(this.client).subscribe( resp => {
+                            console.log("création client" + this.client)
+                            console.log(resp.body.id);
+                        });
+                    });
+
                 }, (response) => this.processError(response));
             });
         }
