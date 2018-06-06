@@ -1,0 +1,26 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "client",
+            "otherEntityName": "client",
+            "relationshipType": "many-to-many",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "typeClient"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "nom",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20180606073313",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "type_client",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "ProjetJhipsterMicroservices",
+    "searchEngine": false
+}
