@@ -1,0 +1,33 @@
+
+{
+    "appliGatewayApp": {
+        "agentImmobilier" : {
+            "home": {
+                "title": "AgentImmobiliers",
+                "createLabel": "Créer un nouveau Agent Immobilier",
+                "createOrEditLabel": "Créer ou éditer un Agent Immobilier"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Agent Immobilier {{ id }} ?"
+            },
+            "detail": {
+                "title": "Agent Immobilier"
+            },
+            "nom": "Nom",
+            "prenom": "Prenom",
+            "adresse": "Adresse",
+            "npa": "Npa",
+            "localite": "Localite",
+            "numTel": "Num Tel",
+            "email": "Email",
+            "idUser": "Id User"
+        }
+    },
+    "projetJhipsterMicroservicesApp": {
+        "agentImmobilier" : {
+            "created": "Un nouveau Agent Immobilier a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Agent Immobilier avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Agent Immobilier avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

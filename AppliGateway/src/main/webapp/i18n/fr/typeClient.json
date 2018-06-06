@@ -1,0 +1,27 @@
+
+{
+    "appliGatewayApp": {
+        "typeClient" : {
+            "home": {
+                "title": "TypeClients",
+                "createLabel": "Créer un nouveau Type Client",
+                "createOrEditLabel": "Créer ou éditer un Type Client"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Client {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Client"
+            },
+            "nom": "Nom",
+            "client": "Client"
+        }
+    },
+    "projetJhipsterMicroservicesApp": {
+        "typeClient" : {
+            "created": "Un nouveau Type Client a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Client avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Client avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

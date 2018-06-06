@@ -8,6 +8,8 @@
             "entities": {
                 "main": "Entités",
                 "client": "Client",
+                "typeClient": "Type Client",
+                "agentImmobilier": "Agent Immobilier",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

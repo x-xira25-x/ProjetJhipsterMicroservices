@@ -19,7 +19,9 @@
             "npa": "Npa",
             "localite": "Localite",
             "numTel": "Num Tel",
-            "email": "Email"
+            "email": "Email",
+            "idUser": "Id User",
+            "typeClient": "Type Client"
         }
     },
     "projetJhipsterMicroservicesApp": {

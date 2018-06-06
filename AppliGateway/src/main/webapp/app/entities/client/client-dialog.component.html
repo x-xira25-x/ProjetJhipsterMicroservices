@@ -95,7 +95,28 @@
             <input type="text" class="form-control" name="email" id="field_email"
                 [(ngModel)]="client.email" />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="appliGatewayApp.client.idUser" for="field_idUser">Id User</label>
+            <input type="number" class="form-control" name="idUser" id="field_idUser"
+                [(ngModel)]="client.idUser" required/>
+            <div [hidden]="!(editForm.controls.idUser?.dirty && editForm.controls.idUser?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idUser?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idUser?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
 
+        <div class="form-group">
+            <label jhiTranslate="appliGatewayApp.client.typeClient" for="field_typeClient">Type Client</label>
+            <select class="form-control" id="field_typeClient" multiple name="typeClient" [(ngModel)]="client.typeClients">
+                <option [ngValue]="getSelected(client.typeClients, typeClientOption)" *ngFor="let typeClientOption of typeclients; trackBy: trackTypeClientById">{{typeClientOption.id}}</option>
+            </select>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">

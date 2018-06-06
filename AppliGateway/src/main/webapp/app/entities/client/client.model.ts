@@ -10,6 +10,8 @@ export class Client implements BaseEntity {
         public localite?: string,
         public numTel?: number,
         public email?: string,
+        public idUser?: number,
+        public typeClients?: BaseEntity[],
     ) {
     }
 }

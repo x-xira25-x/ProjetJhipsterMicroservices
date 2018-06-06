@@ -1,0 +1,72 @@
+<div>
+    <h2>
+        <span jhiTranslate="appliGatewayApp.agentImmobilier.home.title">Agent Immobiliers</span>
+        <button class="btn btn-primary float-right jh-create-entity create-agent-immobilier" [routerLink]="['/', { outlets: { popup: ['agent-immobilier-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="appliGatewayApp.agentImmobilier.home.createLabel">
+            Create new Agent Immobilier
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="agentImmobiliers">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.nom">Nom</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.prenom">Prenom</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.adresse">Adresse</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.npa">Npa</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.localite">Localite</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.numTel">Num Tel</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.email">Email</span></th>
+            <th><span jhiTranslate="appliGatewayApp.agentImmobilier.idUser">Id User</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let agentImmobilier of agentImmobiliers ;trackBy: trackId">
+                <td><a [routerLink]="['../agent-immobilier', agentImmobilier.id ]">{{agentImmobilier.id}}</a></td>
+                <td>{{agentImmobilier.nom}}</td>
+                <td>{{agentImmobilier.prenom}}</td>
+                <td>{{agentImmobilier.adresse}}</td>
+                <td>{{agentImmobilier.npa}}</td>
+                <td>{{agentImmobilier.localite}}</td>
+                <td>{{agentImmobilier.numTel}}</td>
+                <td>{{agentImmobilier.email}}</td>
+                <td>{{agentImmobilier.idUser}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../agent-immobilier', agentImmobilier.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/edit'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'agent-immobilier/'+ agentImmobilier.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

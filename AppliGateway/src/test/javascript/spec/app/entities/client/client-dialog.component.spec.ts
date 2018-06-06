@@ -9,6 +9,7 @@ import { AppliGatewayTestModule } from '../../../test.module';
 import { ClientDialogComponent } from '../../../../../../main/webapp/app/entities/client/client-dialog.component';
 import { ClientService } from '../../../../../../main/webapp/app/entities/client/client.service';
 import { Client } from '../../../../../../main/webapp/app/entities/client/client.model';
+import { TypeClientService } from '../../../../../../main/webapp/app/entities/type-client';
 
 describe('Component Tests', () => {
 
@@ -24,6 +25,7 @@ describe('Component Tests', () => {
                 imports: [AppliGatewayTestModule],
                 declarations: [ClientDialogComponent],
                 providers: [
+                    TypeClientService,
                     ClientService
                 ]
             })
