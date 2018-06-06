@@ -18,9 +18,9 @@
             "adresse": "Adresse",
             "npa": "Npa",
             "localite": "Localite",
-            "numTel": "Num Tel",
             "email": "Email",
             "idUser": "Id User",
+            "numTel": "Num Tel",
             "typeClient": "Type Client"
         }
     },

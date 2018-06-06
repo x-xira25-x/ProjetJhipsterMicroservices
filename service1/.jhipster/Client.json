@@ -51,19 +51,19 @@
             ]
         },
         {
-            "fieldName": "numTel",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
             "fieldName": "email",
             "fieldType": "String"
         },
         {
             "fieldName": "idUser",
             "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "numTel",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

@@ -53,14 +53,14 @@ public class ClientResourceIntTest {
     private static final String DEFAULT_LOCALITE = "AAAAAAAAAA";
     private static final String UPDATED_LOCALITE = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_NUM_TEL = 1;
-    private static final Integer UPDATED_NUM_TEL = 2;
-
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
 
     private static final Long DEFAULT_ID_USER = 1L;
     private static final Long UPDATED_ID_USER = 2L;
+
+    private static final String DEFAULT_NUM_TEL = "AAAAAAAAAA";
+    private static final String UPDATED_NUM_TEL = "BBBBBBBBBB";
 
     @Autowired
     private ClientRepository clientRepository;
@@ -105,9 +105,9 @@ public class ClientResourceIntTest {
             .adresse(DEFAULT_ADRESSE)
             .npa(DEFAULT_NPA)
             .localite(DEFAULT_LOCALITE)
-            .numTel(DEFAULT_NUM_TEL)
             .email(DEFAULT_EMAIL)
-            .idUser(DEFAULT_ID_USER);
+            .idUser(DEFAULT_ID_USER)
+            .numTel(DEFAULT_NUM_TEL);
         return client;
     }
 
@@ -136,9 +136,9 @@ public class ClientResourceIntTest {
         assertThat(testClient.getAdresse()).isEqualTo(DEFAULT_ADRESSE);
         assertThat(testClient.getNpa()).isEqualTo(DEFAULT_NPA);
         assertThat(testClient.getLocalite()).isEqualTo(DEFAULT_LOCALITE);
-        assertThat(testClient.getNumTel()).isEqualTo(DEFAULT_NUM_TEL);
         assertThat(testClient.getEmail()).isEqualTo(DEFAULT_EMAIL);
         assertThat(testClient.getIdUser()).isEqualTo(DEFAULT_ID_USER);
+        assertThat(testClient.getNumTel()).isEqualTo(DEFAULT_NUM_TEL);
     }
 
     @Test
@@ -252,10 +252,10 @@ public class ClientResourceIntTest {
 
     @Test
     @Transactional
-    public void checkNumTelIsRequired() throws Exception {
+    public void checkIdUserIsRequired() throws Exception {
         int databaseSizeBeforeTest = clientRepository.findAll().size();
         // set the field null
-        client.setNumTel(null);
+        client.setIdUser(null);
 
         // Create the Client, which fails.
 
@@ -270,10 +270,10 @@ public class ClientResourceIntTest {
 
     @Test
     @Transactional
-    public void checkIdUserIsRequired() throws Exception {
+    public void checkNumTelIsRequired() throws Exception {
         int databaseSizeBeforeTest = clientRepository.findAll().size();
         // set the field null
-        client.setIdUser(null);
+        client.setNumTel(null);
 
         // Create the Client, which fails.
 
@@ -302,9 +302,9 @@ public class ClientResourceIntTest {
             .andExpect(jsonPath("$.[*].adresse").value(hasItem(DEFAULT_ADRESSE.toString())))
             .andExpect(jsonPath("$.[*].npa").value(hasItem(DEFAULT_NPA.toString())))
             .andExpect(jsonPath("$.[*].localite").value(hasItem(DEFAULT_LOCALITE.toString())))
-            .andExpect(jsonPath("$.[*].numTel").value(hasItem(DEFAULT_NUM_TEL)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL.toString())))
-            .andExpect(jsonPath("$.[*].idUser").value(hasItem(DEFAULT_ID_USER.intValue())));
+            .andExpect(jsonPath("$.[*].idUser").value(hasItem(DEFAULT_ID_USER.intValue())))
+            .andExpect(jsonPath("$.[*].numTel").value(hasItem(DEFAULT_NUM_TEL.toString())));
     }
 
     @Test
@@ -323,9 +323,9 @@ public class ClientResourceIntTest {
             .andExpect(jsonPath("$.adresse").value(DEFAULT_ADRESSE.toString()))
             .andExpect(jsonPath("$.npa").value(DEFAULT_NPA.toString()))
             .andExpect(jsonPath("$.localite").value(DEFAULT_LOCALITE.toString()))
-            .andExpect(jsonPath("$.numTel").value(DEFAULT_NUM_TEL))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL.toString()))
-            .andExpect(jsonPath("$.idUser").value(DEFAULT_ID_USER.intValue()));
+            .andExpect(jsonPath("$.idUser").value(DEFAULT_ID_USER.intValue()))
+            .andExpect(jsonPath("$.numTel").value(DEFAULT_NUM_TEL.toString()));
     }
 
     @Test
@@ -353,9 +353,9 @@ public class ClientResourceIntTest {
             .adresse(UPDATED_ADRESSE)
             .npa(UPDATED_NPA)
             .localite(UPDATED_LOCALITE)
-            .numTel(UPDATED_NUM_TEL)
             .email(UPDATED_EMAIL)
-            .idUser(UPDATED_ID_USER);
+            .idUser(UPDATED_ID_USER)
+            .numTel(UPDATED_NUM_TEL);
 
         restClientMockMvc.perform(put("/api/clients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -371,9 +371,9 @@ public class ClientResourceIntTest {
         assertThat(testClient.getAdresse()).isEqualTo(UPDATED_ADRESSE);
         assertThat(testClient.getNpa()).isEqualTo(UPDATED_NPA);
         assertThat(testClient.getLocalite()).isEqualTo(UPDATED_LOCALITE);
-        assertThat(testClient.getNumTel()).isEqualTo(UPDATED_NUM_TEL);
         assertThat(testClient.getEmail()).isEqualTo(UPDATED_EMAIL);
         assertThat(testClient.getIdUser()).isEqualTo(UPDATED_ID_USER);
+        assertThat(testClient.getNumTel()).isEqualTo(UPDATED_NUM_TEL);
     }
 
     @Test
