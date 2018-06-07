@@ -9,8 +9,8 @@ import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 import { AgentImmobilier } from './agent-immobilier.model';
 import { AgentImmobilierPopupService } from './agent-immobilier-popup.service';
 import { AgentImmobilierService } from './agent-immobilier.service';
-import {User, UserService} from "../../shared";
-import {Register} from "../../account";
+import {User, UserService} from '../../shared';
+import {Register} from '../../account';
 
 @Component({
     selector: 'jhi-agent-immobilier-dialog',
@@ -73,14 +73,12 @@ export class AgentImmobilierDialogComponent implements OnInit {
                 this.registerAccount.langKey = 'en';
                 this.registerService.save(this.registerAccount).subscribe(() => {
                     this.success = true;
-                    console.log("user avant update" + this.user)
                     this.userService.find(this.registerAccount.login).subscribe(resp => {
                         this.user = resp.body;
                         this.user.authorities = this.authorities;
                         this.userService.update(this.user).subscribe();
                         this.agentImmobilier.email = this.registerAccount.email;
                         this.agentImmobilier.idUser = this.user.id;
-
                         this.subscribeToSaveResponse(
                             this.agentImmobilierService.create(this.agentImmobilier));
                     });
