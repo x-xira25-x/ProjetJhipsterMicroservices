@@ -66,7 +66,7 @@ export class RegisterComponent implements OnInit, AfterViewInit {
                     // retourne le user
                     this.userService.find(this.registerAccount.login).subscribe(resp => {
                         console.log('essai ' + resp.body.login);
-
+                        this.client.email = resp.body.email
                         this.client.idUser = resp.body.id;
                         console.log('id user client :' + this.client.idUser);
                         // appeler la sauvegarde du client
