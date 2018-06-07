@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { JhiLanguageService } from 'ng-jhipster';
 
-import { Principal, AccountService, JhiLanguageHelper } from '../../shared';
+import {Principal, AccountService, JhiLanguageHelper, UserService, User} from '../../shared';
+import {Client, ClientService} from "../../entities/client";
 
 @Component({
     selector: 'jhi-settings',
@@ -12,18 +13,33 @@ export class SettingsComponent implements OnInit {
     success: string;
     settingsAccount: any;
     languages: any[];
+    client: Client;
+    user: User[];
 
     constructor(
         private account: AccountService,
         private principal: Principal,
         private languageService: JhiLanguageService,
-        private languageHelper: JhiLanguageHelper
+        private languageHelper: JhiLanguageHelper,
+        private userService: UserService,
+        private clientService: ClientService,
     ) {
     }
 
     ngOnInit() {
         this.principal.identity().then((account) => {
+            //par rapport au login avoir l'id du user
+            this.userService.find(this.copyAccount(account).login).subscribe(resp =>{
+                console.log( resp.body.id)
+                this.clientService.findIdClient(resp.body.id).subscribe(resp => {
+                this.client = resp.body;
+
+                account.valueOf().firstName = resp.body.nom;
+                account.valueOf().lastName = resp.body.prenom;
             this.settingsAccount = this.copyAccount(account);
+            });
+            });
+
         });
         this.languageHelper.getAll().then((languages) => {
             this.languages = languages;
