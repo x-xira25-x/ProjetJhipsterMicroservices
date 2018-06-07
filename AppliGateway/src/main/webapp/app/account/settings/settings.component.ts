@@ -3,6 +3,7 @@ import { JhiLanguageService } from 'ng-jhipster';
 
 import {Principal, AccountService, JhiLanguageHelper, UserService, User} from '../../shared';
 import {Client, ClientService} from "../../entities/client";
+import {AgentImmobilierService} from "../../entities/agent-immobilier/agent-immobilier.service";
 
 @Component({
     selector: 'jhi-settings',
@@ -23,6 +24,7 @@ export class SettingsComponent implements OnInit {
         private languageHelper: JhiLanguageHelper,
         private userService: UserService,
         private clientService: ClientService,
+        private agentImmoService: AgentImmobilierService,
     ) {
     }
 
@@ -36,9 +38,18 @@ export class SettingsComponent implements OnInit {
 
                 account.valueOf().firstName = resp.body.nom;
                 account.valueOf().lastName = resp.body.prenom;
-            this.settingsAccount = this.copyAccount(account);
+                    this.settingsAccount = this.copyAccount(account);
             });
+                this.agentImmoService.findIdAgentImmobilier(resp.body.id).subscribe(resp =>{
+                    console.log(resp.body.nom)
+                    account.valueOf().firstName = resp.body.nom;
+                    account.valueOf().lastName = resp.body.prenom;
+                    this.settingsAccount = this.copyAccount(account);
+                })
+               // this.settingsAccount = this.copyAccount(account);
             });
+
+
 
         });
         this.languageHelper.getAll().then((languages) => {

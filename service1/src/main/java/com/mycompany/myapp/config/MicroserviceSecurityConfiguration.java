@@ -63,6 +63,7 @@ public class MicroserviceSecurityConfiguration extends WebSecurityConfigurerAdap
             .antMatchers("/api/type-clients").permitAll()
             .antMatchers("/api/clients").permitAll()
             .antMatchers("/api/clientIdUser/**").permitAll()
+            .antMatchers("/api/agentImmobilierIdUser/**").permitAll()
             .antMatchers("/api/**").authenticated()
             .antMatchers("/management/health").permitAll()
             .antMatchers("/management/**").hasAuthority(AuthoritiesConstants.ADMIN)
