@@ -20,7 +20,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     Client findOneWithEagerRelationships(@Param("id") Long id);
 
 
-    @Query ("select client from Client client where client.idUser=:idUser")
+    @Query ("select client from Client client left join fetch client.typeClients where client.idUser=:idUser")
     Client findIdClient(@Param("idUser")Long idUser);
 
 }
