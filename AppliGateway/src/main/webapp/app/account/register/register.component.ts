@@ -5,8 +5,8 @@ import {JhiAlertService, JhiLanguageService} from 'ng-jhipster';
 
 import { Register } from './register.service';
 import {LoginModalService, EMAIL_ALREADY_USED_TYPE, LOGIN_ALREADY_USED_TYPE, UserService} from '../../shared';
-import {Client, ClientService} from "../../entities/client";
-import {TypeClient, TypeClientService} from "../../entities/type-client";
+import {Client, ClientService} from '../../entities/client';
+import {TypeClient, TypeClientService} from '../../entities/type-client';
 
 @Component({
     selector: 'jhi-register',
