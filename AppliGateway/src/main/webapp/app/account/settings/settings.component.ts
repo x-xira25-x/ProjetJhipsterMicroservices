@@ -52,6 +52,12 @@ export class SettingsComponent implements OnInit {
             this.success = 'OK';
             this.principal.identity(true).then((account) => {
                 this.settingsAccount = this.copyAccount(account);
+                console.log(this.client.prenom);
+                this.client.nom = account.valueOf().firstName;
+                this.client.prenom = account.valueOf().lastName;
+                console.log(this.client.prenom);
+                console.log(account.valueOf().lastName);
+                this.clientService.update(this.client).subscribe(resp => {});
             });
             this.languageService.getCurrent().then((current) => {
                 if (this.settingsAccount.langKey !== current) {
