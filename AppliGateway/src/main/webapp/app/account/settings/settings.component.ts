@@ -41,6 +41,7 @@ export class SettingsComponent implements OnInit {
 
                 account.valueOf().firstName = resp.body.nom;
                 account.valueOf().lastName = resp.body.prenom;
+                account.valueOf().email = resp.body.email;
                 this.settingsAccount = this.copyAccount(account)
 
 
@@ -49,6 +50,7 @@ export class SettingsComponent implements OnInit {
                   this.agentImmobilier = resp.body;
                     account.valueOf().firstName = resp.body.nom;
                     account.valueOf().lastName = resp.body.prenom;
+                    account.valueOf().email = resp.body.email
                     this.settingsAccount = this.copyAccount(account);
                 })
 
@@ -72,12 +74,14 @@ export class SettingsComponent implements OnInit {
                     console.log(this.client);
                     this.client.nom = account.valueOf().firstName;
                     this.client.prenom = account.valueOf().lastName;
+                    this.client.email = account.valueOf().email;
                     console.log(this.client.prenom);
                     console.log("lastaname " + account.valueOf().lastName);
                     this.clientService.update(this.client).subscribe(resp => {});
                 }else{
                     this.agentImmobilier.nom = account.valueOf().firstName;
                     this.agentImmobilier.prenom = account.valueOf().lastName;
+                    this.agentImmobilier.email = account.valueOf().email;
                     console.log("agent" + this.agentImmobilier)
                     this.agentImmoService.update(this.agentImmobilier).subscribe(res =>{});
                 }
