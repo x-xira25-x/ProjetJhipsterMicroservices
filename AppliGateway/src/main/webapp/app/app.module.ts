@@ -27,6 +27,8 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
+import { AvendreComponent } from './avendre/avendre.component';
+import {AvendreModule} from "./avendre/avendre.module";
 
 @NgModule({
     imports: [
@@ -38,6 +40,7 @@ import {
         AppliGatewayAdminModule,
         AppliGatewayAccountModule,
         AppliGatewayEntityModule,
+        AvendreModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
