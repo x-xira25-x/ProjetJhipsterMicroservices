@@ -7,7 +7,7 @@ body, h1, h2, h3, h4 {
 }
 
 body {
-    background: #e4e5e6;
+    background: #ede6e1;
 }
 
 a {
@@ -191,6 +191,11 @@ ui bootstrap tweaks
     cursor: pointer;
 }
 
+.imgCarousel {
+    margin: auto;
+    height: auto;
+    width:100%;
+}
 .datetime-picker-dropdown > li.date-picker-menu div > table .btn-secondary,
 .uib-datepicker-popup  > li > div.uib-datepicker > table .btn-secondary {
     border: 0;
