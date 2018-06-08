@@ -6,6 +6,7 @@ import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { Bien } from './bien.model';
 import { BienService } from './bien.service';
+import {Client, ClientService} from '../client';
 
 @Component({
     selector: 'jhi-bien-detail',
@@ -14,6 +15,7 @@ import { BienService } from './bien.service';
 export class BienDetailComponent implements OnInit, OnDestroy {
 
     bien: Bien;
+    client: Client;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
 
@@ -21,21 +23,29 @@ export class BienDetailComponent implements OnInit, OnDestroy {
         private eventManager: JhiEventManager,
         private dataUtils: JhiDataUtils,
         private bienService: BienService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private clientService: ClientService,
     ) {
     }
 
     ngOnInit() {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
+
         });
         this.registerChangeInBiens();
+
     }
 
     load(id) {
         this.bienService.find(id)
             .subscribe((bienResponse: HttpResponse<Bien>) => {
                 this.bien = bienResponse.body;
+                console.log(this.bien.idClient)
+                this.clientService.find(this.bien.idClient).subscribe( resp=>{
+                    this.client= resp.body;
+                    console.log(this.client)
+                })
             });
     }
     byteSize(field) {
