@@ -10,6 +10,9 @@
                 "client": "Client",
                 "typeClient": "Type Client",
                 "agentImmobilier": "Agent Immobilier",
+                "bien": "Bien",
+                "typeBien": "Type Bien",
+                "etatBien": "Etat Bien",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

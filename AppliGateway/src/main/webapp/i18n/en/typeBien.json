@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "typeBien" : {
+            "home": {
+                "title": "Type Biens",
+                "createLabel": "Create a new Type Bien",
+                "createOrEditLabel": "Create or edit a Type Bien"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Type Bien {{ id }}?"
+            },
+            "detail": {
+                "title": "Type Bien"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service2BienApp": {
+        "typeBien" : {
+            "created": "A new Type Bien is created with identifier {{ param }}",
+            "updated": "A Type Bien is updated with identifier {{ param }}",
+            "deleted": "A Type Bien is deleted with identifier {{ param }}"
+        }
+    }
+}

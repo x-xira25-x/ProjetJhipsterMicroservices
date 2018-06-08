@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "etatBien" : {
+            "home": {
+                "title": "EtatBiens",
+                "createLabel": "Créer un nouveau Etat Bien",
+                "createOrEditLabel": "Créer ou éditer un Etat Bien"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Etat Bien {{ id }} ?"
+            },
+            "detail": {
+                "title": "Etat Bien"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service2BienApp": {
+        "etatBien" : {
+            "created": "Un nouveau Etat Bien a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Etat Bien avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Etat Bien avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

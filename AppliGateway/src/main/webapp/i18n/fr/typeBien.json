@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "typeBien" : {
+            "home": {
+                "title": "TypeBiens",
+                "createLabel": "Créer un nouveau Type Bien",
+                "createOrEditLabel": "Créer ou éditer un Type Bien"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Type Bien {{ id }} ?"
+            },
+            "detail": {
+                "title": "Type Bien"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service2BienApp": {
+        "typeBien" : {
+            "created": "Un nouveau Type Bien a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Type Bien avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Type Bien avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

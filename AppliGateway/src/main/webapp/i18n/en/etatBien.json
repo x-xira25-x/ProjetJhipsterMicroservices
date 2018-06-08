@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "etatBien" : {
+            "home": {
+                "title": "Etat Biens",
+                "createLabel": "Create a new Etat Bien",
+                "createOrEditLabel": "Create or edit a Etat Bien"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Etat Bien {{ id }}?"
+            },
+            "detail": {
+                "title": "Etat Bien"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service2BienApp": {
+        "etatBien" : {
+            "created": "A new Etat Bien is created with identifier {{ param }}",
+            "updated": "A Etat Bien is updated with identifier {{ param }}",
+            "deleted": "A Etat Bien is deleted with identifier {{ param }}"
+        }
+    }
+}
