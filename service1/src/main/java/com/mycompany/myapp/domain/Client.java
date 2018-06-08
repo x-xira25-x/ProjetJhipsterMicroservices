@@ -44,16 +44,16 @@ public class Client implements Serializable {
     @Column(name = "localite", nullable = false)
     private String localite;
 
-    @NotNull
-    @Column(name = "num_tel", nullable = false)
-    private Integer numTel;
-
     @Column(name = "email")
     private String email;
 
     @NotNull
     @Column(name = "id_user", nullable = false)
     private Long idUser;
+
+    @NotNull
+    @Column(name = "num_tel", nullable = false)
+    private String numTel;
 
     @ManyToMany
     @JoinTable(name = "client_type_client",
@@ -135,19 +135,6 @@ public class Client implements Serializable {
         this.localite = localite;
     }
 
-    public Integer getNumTel() {
-        return numTel;
-    }
-
-    public Client numTel(Integer numTel) {
-        this.numTel = numTel;
-        return this;
-    }
-
-    public void setNumTel(Integer numTel) {
-        this.numTel = numTel;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -172,6 +159,19 @@ public class Client implements Serializable {
 
     public void setIdUser(Long idUser) {
         this.idUser = idUser;
+    }
+
+    public String getNumTel() {
+        return numTel;
+    }
+
+    public Client numTel(String numTel) {
+        this.numTel = numTel;
+        return this;
+    }
+
+    public void setNumTel(String numTel) {
+        this.numTel = numTel;
     }
 
     public Set<TypeClient> getTypeClients() {
@@ -229,9 +229,9 @@ public class Client implements Serializable {
             ", adresse='" + getAdresse() + "'" +
             ", npa='" + getNpa() + "'" +
             ", localite='" + getLocalite() + "'" +
-            ", numTel=" + getNumTel() +
             ", email='" + getEmail() + "'" +
             ", idUser=" + getIdUser() +
+            ", numTel='" + getNumTel() + "'" +
             "}";
     }
 }

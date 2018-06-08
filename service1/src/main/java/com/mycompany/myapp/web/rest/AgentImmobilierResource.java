@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import sun.management.Agent;
 
 import javax.validation.Valid;
 import java.net.URI;
@@ -116,5 +117,15 @@ public class AgentImmobilierResource {
         log.debug("REST request to delete AgentImmobilier : {}", id);
         agentImmobilierRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
+    }
+
+
+    //méthode qui retourne l'id du client
+    @GetMapping("/agentImmobilierIdUser/{idUser}")
+    @Timed
+    public ResponseEntity<AgentImmobilier>   findIdClient(@PathVariable Long idUser){
+        log.debug("REST request to get Client : {}", idUser);
+        AgentImmobilier agentImmobilier = agentImmobilierRepository.findIdAgentImmobilier(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(agentImmobilier));
     }
 }

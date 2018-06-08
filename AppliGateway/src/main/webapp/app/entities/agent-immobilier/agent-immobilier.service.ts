@@ -5,6 +5,7 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { AgentImmobilier } from './agent-immobilier.model';
 import { createRequestOption } from '../../shared';
+import {Client} from "../client/client.model";
 
 export type EntityResponseType = HttpResponse<AgentImmobilier>;
 
@@ -31,6 +32,13 @@ export class AgentImmobilierService {
         return this.http.get<AgentImmobilier>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
+
+    // ajout méthode qui retourne du client par login
+    findIdAgentImmobilier(id: number): Observable<EntityResponseType> {
+        return this.http.get<AgentImmobilier>(`http://localhost:8080/projetjhipstermicroservices/api/agentImmobilierIdUser/${id}`, {observe: 'response' })
+            .map((res: EntityResponseType) => this.convertResponse(res));
+    }
+
 
     query(req?: any): Observable<HttpResponse<AgentImmobilier[]>> {
         const options = createRequestOption(req);

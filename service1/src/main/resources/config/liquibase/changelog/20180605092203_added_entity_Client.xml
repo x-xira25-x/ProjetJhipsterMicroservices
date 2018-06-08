@@ -42,15 +42,15 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="num_tel" type="integer">
-                <constraints nullable="false" />
-            </column>
-
             <column name="email" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
             <column name="id_user" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="num_tel" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
