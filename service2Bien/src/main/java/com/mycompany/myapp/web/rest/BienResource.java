@@ -103,6 +103,16 @@ public class BienResource {
         Bien bien = bienRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(bien));
     }
+//ajout
+
+    @GetMapping("/biens/{idTypeBien}/typeBien")
+    @Timed
+    public List<Bien> findAllBienByTypeBien(@PathVariable("idTypeBien")Long idTypeBien){
+
+        log.debug("REST request to get all visite of Biens");
+
+        return bienRepository.findAllBienByTypeBien(idTypeBien);
+    }
 
     /**
      * DELETE  /biens/:id : delete the "id" bien.

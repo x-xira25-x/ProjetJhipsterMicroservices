@@ -63,14 +63,14 @@ export class AvendreComponent implements OnInit {
     trackTypeBienByNom(index: number, item: TypeBien) {
         return item.nom;
     }
-   /* filtre() {
-        this.avendreVisiteService.findBienByType(this.typebien.id).subscribe(
+    filtre() {
+        this.bienService.findBienByType(this.typebien.id).subscribe(
             (res: HttpResponse<Bien[]>) => {
                 this.biens = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-    }*/
+    }
 
 
 }
