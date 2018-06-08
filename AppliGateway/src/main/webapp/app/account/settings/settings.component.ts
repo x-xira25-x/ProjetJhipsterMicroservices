@@ -32,21 +32,24 @@ export class SettingsComponent implements OnInit {
         this.principal.identity().then((account) => {
             //par rapport au login avoir l'id du user
             this.userService.find(this.copyAccount(account).login).subscribe(resp =>{
+
                 console.log( resp.body.id)
                 this.clientService.findIdClient(resp.body.id).subscribe(resp => {
                 this.client = resp.body;
 
                 account.valueOf().firstName = resp.body.nom;
                 account.valueOf().lastName = resp.body.prenom;
-                    this.settingsAccount = this.copyAccount(account);
-            });
+                this.settingsAccount = this.copyAccount(account)
+
+
+            }) ;
                 this.agentImmoService.findIdAgentImmobilier(resp.body.id).subscribe(resp =>{
                     console.log(resp.body.nom)
                     account.valueOf().firstName = resp.body.nom;
                     account.valueOf().lastName = resp.body.prenom;
                     this.settingsAccount = this.copyAccount(account);
                 })
-               // this.settingsAccount = this.copyAccount(account);
+
             });
 
 
