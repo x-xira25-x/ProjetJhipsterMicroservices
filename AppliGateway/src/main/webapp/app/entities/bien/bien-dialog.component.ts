@@ -11,6 +11,7 @@ import { BienPopupService } from './bien-popup.service';
 import { BienService } from './bien.service';
 import { EtatBien, EtatBienService } from '../etat-bien';
 import { TypeBien, TypeBienService } from '../type-bien';
+import {Client, ClientService} from "../client";
 
 @Component({
     selector: 'jhi-bien-dialog',
@@ -20,8 +21,9 @@ export class BienDialogComponent implements OnInit {
 
     bien: Bien;
     isSaving: boolean;
-
+client: Client;
     etatbiens: EtatBien[];
+    clients : Client[];
 
     typebiens: TypeBien[];
     anneeConstructionDp: any;
@@ -34,7 +36,8 @@ export class BienDialogComponent implements OnInit {
         private etatBienService: EtatBienService,
         private typeBienService: TypeBienService,
         private elementRef: ElementRef,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private clientService: ClientService,
     ) {
     }
 
@@ -44,6 +47,9 @@ export class BienDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<EtatBien[]>) => { this.etatbiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.typeBienService.query()
             .subscribe((res: HttpResponse<TypeBien[]>) => { this.typebiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {this.clients = res.body
+            console.log(this.clients)
+        }, (res: HttpErrorResponse)=> this.onError(res.message));
     }
 
     byteSize(field) {
@@ -69,10 +75,15 @@ export class BienDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.bien.id !== undefined) {
+            this.bien.idClient= this.client.id;
             this.subscribeToSaveResponse(
                 this.bienService.update(this.bien));
         } else {
+            console.log(this.client.id)
+            this.bien.idClient= this.client.id;
+
             this.subscribeToSaveResponse(
+
                 this.bienService.create(this.bien));
         }
     }
@@ -97,11 +108,16 @@ export class BienDialogComponent implements OnInit {
     }
 
     trackEtatBienById(index: number, item: EtatBien) {
+
         return item.id;
     }
 
     trackTypeBienById(index: number, item: TypeBien) {
         return item.id;
+    }
+    trackClientById(index:number, item: Client){
+        return item.id;
+
     }
 }
 
