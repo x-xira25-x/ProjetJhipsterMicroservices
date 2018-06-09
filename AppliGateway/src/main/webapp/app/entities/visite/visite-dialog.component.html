@@ -38,7 +38,11 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idAgentImmobilier" for="field_idAgentImmobilier">Id Agent Immobilier</label>
-            <input type="number" class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier"
+            <select class="form-control" id="field_idAgentImmobilier" name="agentImmobilier" [(ngModel)]="agentImmobilier"  required>
+               <!-- <option *ngIf="!editForm.value.agentsImmo" [ngValue]="null" selected></option>-->
+                <option [ngValue]="agentImmoOption === agentImmobilier ? agentImmobilier : agentImmoOption" *ngFor="let agentImmoOption of agentsImmo; trackBy: trackAgentImmoById">{{agentImmoOption.id}}</option>
+            </select>
+           <!-- <input type="number" class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier"
                 [(ngModel)]="visite.idAgentImmobilier" required/>
             <div [hidden]="!(editForm.controls.idAgentImmobilier?.dirty && editForm.controls.idAgentImmobilier?.invalid)">
                 <small class="form-text text-danger"
@@ -49,7 +53,7 @@
                     [hidden]="!editForm.controls.idAgentImmobilier?.errors?.number" jhiTranslate="entity.validation.number">
                     This field should be a number.
                 </small>
-            </div>
+            </div>-->
         </div>
 
         <div class="form-group">

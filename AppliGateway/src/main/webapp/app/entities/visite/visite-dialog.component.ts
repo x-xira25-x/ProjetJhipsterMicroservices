@@ -10,6 +10,7 @@ import { Visite } from './visite.model';
 import { VisitePopupService } from './visite-popup.service';
 import { VisiteService } from './visite.service';
 import { EtatVisite, EtatVisiteService } from '../etat-visite';
+import {AgentImmobilier, AgentImmobilierService} from "../agent-immobilier";
 
 @Component({
     selector: 'jhi-visite-dialog',
@@ -19,7 +20,8 @@ export class VisiteDialogComponent implements OnInit {
 
     visite: Visite;
     isSaving: boolean;
-
+    agentsImmo: AgentImmobilier[];
+    agentImmobilier: AgentImmobilier;
     etatvisites: EtatVisite[];
 
     constructor(
@@ -27,7 +29,8 @@ export class VisiteDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private visiteService: VisiteService,
         private etatVisiteService: EtatVisiteService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private agentImmoService: AgentImmobilierService,
     ) {
     }
 
@@ -35,6 +38,9 @@ export class VisiteDialogComponent implements OnInit {
         this.isSaving = false;
         this.etatVisiteService.query()
             .subscribe((res: HttpResponse<EtatVisite[]>) => { this.etatvisites = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.agentImmoService.query().subscribe((res :HttpResponse<AgentImmobilier[]>) => {this.agentsImmo =res.body;
+            console.log(this.agentsImmo)},(res: HttpErrorResponse) => this.onError(res.message) )
+
     }
 
     clear() {
@@ -44,9 +50,11 @@ export class VisiteDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.visite.id !== undefined) {
+            this.visite.idAgentImmobilier = this.agentImmobilier.id;
             this.subscribeToSaveResponse(
                 this.visiteService.update(this.visite));
         } else {
+            this.visite.idAgentImmobilier = this.agentImmobilier.id;
             this.subscribeToSaveResponse(
                 this.visiteService.create(this.visite));
         }
@@ -72,6 +80,11 @@ export class VisiteDialogComponent implements OnInit {
     }
 
     trackEtatVisiteById(index: number, item: EtatVisite) {
+        return item.id;
+    }
+
+    trackAgentImmoById(index: number, item: AgentImmobilier){
+
         return item.id;
     }
 }
