@@ -1,0 +1,30 @@
+
+{
+    "appliGatewayApp": {
+        "visite" : {
+            "home": {
+                "title": "Visites",
+                "createLabel": "Create a new Visite",
+                "createOrEditLabel": "Create or edit a Visite"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Visite {{ id }}?"
+            },
+            "detail": {
+                "title": "Visite"
+            },
+            "dateDebut": "Date Debut",
+            "dateFin": "Date Fin",
+            "idAgentImmobilier": "Id Agent Immobilier",
+            "etatVisite": "Etat Visite",
+            "clientVisite": "Client Visite"
+        }
+    },
+    "service3VisiteApp": {
+        "visite" : {
+            "created": "A new Visite is created with identifier {{ param }}",
+            "updated": "A Visite is updated with identifier {{ param }}",
+            "deleted": "A Visite is deleted with identifier {{ param }}"
+        }
+    }
+}

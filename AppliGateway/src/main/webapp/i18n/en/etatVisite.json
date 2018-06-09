@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "etatVisite" : {
+            "home": {
+                "title": "Etat Visites",
+                "createLabel": "Create a new Etat Visite",
+                "createOrEditLabel": "Create or edit a Etat Visite"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Etat Visite {{ id }}?"
+            },
+            "detail": {
+                "title": "Etat Visite"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service3VisiteApp": {
+        "etatVisite" : {
+            "created": "A new Etat Visite is created with identifier {{ param }}",
+            "updated": "A Etat Visite is updated with identifier {{ param }}",
+            "deleted": "A Etat Visite is deleted with identifier {{ param }}"
+        }
+    }
+}

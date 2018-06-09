@@ -1,0 +1,40 @@
+
+<div *ngIf="visite">
+    <h2><span jhiTranslate="appliGatewayApp.visite.detail.title">Visite</span> {{visite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="appliGatewayApp.visite.dateDebut">Date Debut</span></dt>
+        <dd>
+            <span>{{visite.dateDebut | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.visite.dateFin">Date Fin</span></dt>
+        <dd>
+            <span>{{visite.dateFin | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.visite.idAgentImmobilier">Id Agent Immobilier</span></dt>
+        <dd>
+            <span>{{visite.idAgentImmobilier}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.visite.etatVisite">Etat Visite</span></dt>
+        <dd>
+            <div *ngIf="visite.etatVisite">
+                <a [routerLink]="['/etat-visite', visite.etatVisite?.id]">{{visite.etatVisite?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

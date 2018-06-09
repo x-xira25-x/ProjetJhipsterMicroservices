@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "com.mycompany.myapp",
       "nativeLanguage": "en",
-      "microservicePath": "../service2Bien"
+      "microservicePath": "../service3Visite"
     },
     "jhipsterVersion": "4.14.3",
     "baseName": "AppliGateway",

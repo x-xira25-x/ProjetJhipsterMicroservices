@@ -1,0 +1,48 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "etatVisite",
+            "otherEntityName": "etatVisite",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "clientVisite",
+            "otherEntityName": "clientVisite",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "visite"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "dateDebut",
+            "fieldType": "ZonedDateTime",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dateFin",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "idAgentImmobilier",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180608152104",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "visite",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "service3Visite",
+    "searchEngine": false
+}
