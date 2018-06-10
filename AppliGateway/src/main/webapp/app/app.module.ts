@@ -29,6 +29,8 @@ import {
 } from './layouts';
 import { AvendreComponent } from './avendre/avendre.component';
 import {AvendreModule} from "./avendre/avendre.module";
+import { OngletVisitesClientComponent } from './onglet-visites-client/onglet-visites-client.component';
+import {OngletVisitesClientModule} from "./onglet-visites-client/onglet-visites-client.module";
 
 @NgModule({
     imports: [
@@ -41,6 +43,7 @@ import {AvendreModule} from "./avendre/avendre.module";
         AppliGatewayAccountModule,
         AppliGatewayEntityModule,
         AvendreModule,
+        OngletVisitesClientModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
@@ -49,7 +52,8 @@ import {AvendreModule} from "./avendre/avendre.module";
         ErrorComponent,
         PageRibbonComponent,
         ActiveMenuDirective,
-        FooterComponent
+        FooterComponent,
+
     ],
     providers: [
         ProfileService,
