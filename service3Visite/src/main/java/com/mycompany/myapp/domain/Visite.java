@@ -35,6 +35,10 @@ public class Visite implements Serializable {
     @Column(name = "id_agent_immobilier", nullable = false)
     private Long idAgentImmobilier;
 
+    @NotNull
+    @Column(name = "id_bien", nullable = false)
+    private Long idBien;
+
     @ManyToOne(optional = false)
     @NotNull
     private EtatVisite etatVisite;
@@ -89,6 +93,19 @@ public class Visite implements Serializable {
 
     public void setIdAgentImmobilier(Long idAgentImmobilier) {
         this.idAgentImmobilier = idAgentImmobilier;
+    }
+
+    public Long getIdBien() {
+        return idBien;
+    }
+
+    public Visite idBien(Long idBien) {
+        this.idBien = idBien;
+        return this;
+    }
+
+    public void setIdBien(Long idBien) {
+        this.idBien = idBien;
     }
 
     public EtatVisite getEtatVisite() {
@@ -157,6 +174,7 @@ public class Visite implements Serializable {
             ", dateDebut='" + getDateDebut() + "'" +
             ", dateFin='" + getDateFin() + "'" +
             ", idAgentImmobilier=" + getIdAgentImmobilier() +
+            ", idBien=" + getIdBien() +
             "}";
     }
 }

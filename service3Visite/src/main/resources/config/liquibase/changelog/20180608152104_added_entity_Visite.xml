@@ -34,6 +34,10 @@
                 <constraints nullable="false" />
             </column>
 
+            <column name="id_bien" type="bigint">
+                <constraints nullable="false" />
+            </column>
+
             <column name="etat_visite_id" type="bigint">
                 <constraints nullable="false" />
             </column>

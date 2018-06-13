@@ -53,6 +53,9 @@ public class VisiteResourceIntTest {
     private static final Long DEFAULT_ID_AGENT_IMMOBILIER = 1L;
     private static final Long UPDATED_ID_AGENT_IMMOBILIER = 2L;
 
+    private static final Long DEFAULT_ID_BIEN = 1L;
+    private static final Long UPDATED_ID_BIEN = 2L;
+
     @Autowired
     private VisiteRepository visiteRepository;
 
@@ -93,7 +96,8 @@ public class VisiteResourceIntTest {
         Visite visite = new Visite()
             .dateDebut(DEFAULT_DATE_DEBUT)
             .dateFin(DEFAULT_DATE_FIN)
-            .idAgentImmobilier(DEFAULT_ID_AGENT_IMMOBILIER);
+            .idAgentImmobilier(DEFAULT_ID_AGENT_IMMOBILIER)
+            .idBien(DEFAULT_ID_BIEN);
         // Add required entity
         EtatVisite etatVisite = EtatVisiteResourceIntTest.createEntity(em);
         em.persist(etatVisite);
@@ -125,6 +129,7 @@ public class VisiteResourceIntTest {
         assertThat(testVisite.getDateDebut()).isEqualTo(DEFAULT_DATE_DEBUT);
         assertThat(testVisite.getDateFin()).isEqualTo(DEFAULT_DATE_FIN);
         assertThat(testVisite.getIdAgentImmobilier()).isEqualTo(DEFAULT_ID_AGENT_IMMOBILIER);
+        assertThat(testVisite.getIdBien()).isEqualTo(DEFAULT_ID_BIEN);
     }
 
     @Test
@@ -184,6 +189,24 @@ public class VisiteResourceIntTest {
 
     @Test
     @Transactional
+    public void checkIdBienIsRequired() throws Exception {
+        int databaseSizeBeforeTest = visiteRepository.findAll().size();
+        // set the field null
+        visite.setIdBien(null);
+
+        // Create the Visite, which fails.
+
+        restVisiteMockMvc.perform(post("/api/visites")
+            .contentType(TestUtil.APPLICATION_JSON_UTF8)
+            .content(TestUtil.convertObjectToJsonBytes(visite)))
+            .andExpect(status().isBadRequest());
+
+        List<Visite> visiteList = visiteRepository.findAll();
+        assertThat(visiteList).hasSize(databaseSizeBeforeTest);
+    }
+
+    @Test
+    @Transactional
     public void getAllVisites() throws Exception {
         // Initialize the database
         visiteRepository.saveAndFlush(visite);
@@ -195,7 +218,8 @@ public class VisiteResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(visite.getId().intValue())))
             .andExpect(jsonPath("$.[*].dateDebut").value(hasItem(sameInstant(DEFAULT_DATE_DEBUT))))
             .andExpect(jsonPath("$.[*].dateFin").value(hasItem(sameInstant(DEFAULT_DATE_FIN))))
-            .andExpect(jsonPath("$.[*].idAgentImmobilier").value(hasItem(DEFAULT_ID_AGENT_IMMOBILIER.intValue())));
+            .andExpect(jsonPath("$.[*].idAgentImmobilier").value(hasItem(DEFAULT_ID_AGENT_IMMOBILIER.intValue())))
+            .andExpect(jsonPath("$.[*].idBien").value(hasItem(DEFAULT_ID_BIEN.intValue())));
     }
 
     @Test
@@ -211,7 +235,8 @@ public class VisiteResourceIntTest {
             .andExpect(jsonPath("$.id").value(visite.getId().intValue()))
             .andExpect(jsonPath("$.dateDebut").value(sameInstant(DEFAULT_DATE_DEBUT)))
             .andExpect(jsonPath("$.dateFin").value(sameInstant(DEFAULT_DATE_FIN)))
-            .andExpect(jsonPath("$.idAgentImmobilier").value(DEFAULT_ID_AGENT_IMMOBILIER.intValue()));
+            .andExpect(jsonPath("$.idAgentImmobilier").value(DEFAULT_ID_AGENT_IMMOBILIER.intValue()))
+            .andExpect(jsonPath("$.idBien").value(DEFAULT_ID_BIEN.intValue()));
     }
 
     @Test
@@ -236,7 +261,8 @@ public class VisiteResourceIntTest {
         updatedVisite
             .dateDebut(UPDATED_DATE_DEBUT)
             .dateFin(UPDATED_DATE_FIN)
-            .idAgentImmobilier(UPDATED_ID_AGENT_IMMOBILIER);
+            .idAgentImmobilier(UPDATED_ID_AGENT_IMMOBILIER)
+            .idBien(UPDATED_ID_BIEN);
 
         restVisiteMockMvc.perform(put("/api/visites")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -250,6 +276,7 @@ public class VisiteResourceIntTest {
         assertThat(testVisite.getDateDebut()).isEqualTo(UPDATED_DATE_DEBUT);
         assertThat(testVisite.getDateFin()).isEqualTo(UPDATED_DATE_FIN);
         assertThat(testVisite.getIdAgentImmobilier()).isEqualTo(UPDATED_ID_AGENT_IMMOBILIER);
+        assertThat(testVisite.getIdBien()).isEqualTo(UPDATED_ID_BIEN);
     }
 
     @Test

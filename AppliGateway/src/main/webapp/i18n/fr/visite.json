@@ -16,6 +16,7 @@
             "dateDebut": "Date Debut",
             "dateFin": "Date Fin",
             "idAgentImmobilier": "Id Agent Immobilier",
+            "idBien": "Id Bien",
             "etatVisite": "Etat Visite",
             "clientVisite": "Client Visite"
         }

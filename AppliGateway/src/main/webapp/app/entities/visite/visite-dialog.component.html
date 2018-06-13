@@ -38,11 +38,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idAgentImmobilier" for="field_idAgentImmobilier">Id Agent Immobilier</label>
-            <select class="form-control" id="field_idAgentImmobilier" name="agentImmobilier" [(ngModel)]="agentImmobilier"  required>
-               <!-- <option *ngIf="!editForm.value.agentsImmo" [ngValue]="null" selected></option>-->
-                <option [ngValue]="agentImmoOption === agentImmobilier ? agentImmobilier : agentImmoOption" *ngFor="let agentImmoOption of agentsImmo; trackBy: trackAgentImmoById">{{agentImmoOption.id}}</option>
-            </select>
-           <!-- <input type="number" class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier"
+            <input type="number" class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier"
                 [(ngModel)]="visite.idAgentImmobilier" required/>
             <div [hidden]="!(editForm.controls.idAgentImmobilier?.dirty && editForm.controls.idAgentImmobilier?.invalid)">
                 <small class="form-text text-danger"
@@ -53,14 +49,29 @@
                     [hidden]="!editForm.controls.idAgentImmobilier?.errors?.number" jhiTranslate="entity.validation.number">
                     This field should be a number.
                 </small>
-            </div>-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idBien" for="field_idBien">Id Bien</label>
+            <input type="number" class="form-control" name="idBien" id="field_idBien"
+                [(ngModel)]="visite.idBien" required/>
+            <div [hidden]="!(editForm.controls.idBien?.dirty && editForm.controls.idBien?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.idBien?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.idBien?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
         </div>
 
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.etatVisite" for="field_etatVisite">Etat Visite</label>
             <select class="form-control" id="field_etatVisite" name="etatVisite" [(ngModel)]="visite.etatVisite"  required>
                 <option *ngIf="!editForm.value.etatVisite" [ngValue]="null" selected></option>
-                <option [ngValue]="etatVisiteOption.id === visite.etatVisite?.id ? visite.etatVisite : etatVisiteOption" *ngFor="let etatVisiteOption of etatvisites; trackBy: trackEtatVisiteById">{{etatVisiteOption.nom}}</option>
+                <option [ngValue]="etatVisiteOption.id === visite.etatVisite?.id ? visite.etatVisite : etatVisiteOption" *ngFor="let etatVisiteOption of etatvisites; trackBy: trackEtatVisiteById">{{etatVisiteOption.id}}</option>
             </select>
         </div>
         <div [hidden]="!(editForm.controls.etatVisite?.dirty && editForm.controls.etatVisite?.invalid)">
