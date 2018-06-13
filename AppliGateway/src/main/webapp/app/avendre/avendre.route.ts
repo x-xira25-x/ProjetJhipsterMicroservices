@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import {AvendreComponent} from './avendre.component';
 import {UserRouteAccessService} from '../shared';
+import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
+import {avendreVisitePopupComponent} from "./avendre-visite-dialogue.component";
 
 
 export const avendreRoute: Routes = [
@@ -13,7 +15,7 @@ export const avendreRoute: Routes = [
         },
     }
 ];
-/*export const avendrePopupRoute: Routes = [
+export const avendrePopupRoute: Routes = [
     {
         path: 'bienVisite/:id/visite',
 
@@ -26,4 +28,4 @@ export const avendreRoute: Routes = [
         outlet: 'popup'
     }
 
-];*/
+];

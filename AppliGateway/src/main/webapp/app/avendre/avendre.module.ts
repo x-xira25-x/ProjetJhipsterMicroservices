@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {avendreRoute} from "./avendre.route";
+import {avendrePopupRoute, avendreRoute} from "./avendre.route";
 import {RouterModule} from "@angular/router";
 import {AvendreComponent} from "./avendre.component";
 import {AppliGatewaySharedModule} from "../shared";
+import {AvendreVisiteDialogueComponent, avendreVisitePopupComponent} from './avendre-visite-dialogue.component';
+import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
+import {AvendreVisiteService} from "./avendre-visite.service";
 
 const ENTITY_STATES = [
     ...avendreRoute,
-/*    ...avendrePopupRoute*/
+    ...avendrePopupRoute,
 ];
 @NgModule({
   imports: [
@@ -18,18 +21,20 @@ const ENTITY_STATES = [
     declarations: [
 
         AvendreComponent,
-      /*  AvendreVisiteDialogComponent,
-        avendreVisitePopupComponent*/
+        AvendreVisiteDialogueComponent,
+        avendreVisitePopupComponent ,
+
     ],
     entryComponents: [
         AvendreComponent,
-       /* AvendreVisiteDialogComponent,
-        avendreVisitePopupComponent*/
+        AvendreVisiteDialogueComponent,
+        avendreVisitePopupComponent,
+
     ],
 
     providers: [
-       /* AvendreVisitePopupService,
-        AvendreVisiteService*/
+        AvendreVisitePopupService,
+        AvendreVisiteService
     ]
 
 })
