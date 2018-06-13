@@ -28,6 +28,11 @@ export class VisiteService {
         return this.http.put<Visite>(this.resourceUrl, copy, { observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
+    queryVisiteBien(idBien: number): Observable<HttpResponse<Visite[]>> {
+        const options = createRequestOption(idBien);
+        return this.http.get<Visite[]>(`http://localhost:8080/service3visite/api/visites/${idBien}/bien`, { params: options, observe: 'response' })
+            .map((res: HttpResponse<Visite[]>) => this.convertArrayResponse(res));
+    }
 
     find(id: number): Observable<EntityResponseType> {
         return this.http.get<Visite>(`${this.resourceUrl}/${id}`, { observe: 'response'})
