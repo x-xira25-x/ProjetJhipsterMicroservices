@@ -39,6 +39,7 @@ export class OngletVisitesClientComponent implements OnInit {
         private userService: UserService,
 
 
+
     ) { }
 
     loadAll() {
@@ -88,47 +89,17 @@ export class OngletVisitesClientComponent implements OnInit {
             });
     }
 
-// essaie suppression client à la visite
+// suppression client à la visite
     desister(idVisite) {
         console.log('entre dans la inscripton');
-        // récupérer  client
-  /*      this.principal.identity().then((account) => {
-            this.settingsAccount = this.copyAccount(account);
-            this.clientService.findIdClient(this.settingsAccount.login).subscribe(
-                (res: HttpResponse<Client>) => {
-                    this.client = res.body;
-                    console.log('client' + this.client.id);
-                    // essayer de récupérer la visite et mettre le client dedans
-                    this.visiteService.find(idVisite).subscribe(
-                        (res: HttpResponse<Visite>) => {
-                            this.visite=res.body;
-                            console.log('visite'+ this.visite.id);
+        console.log(idVisite)
+        console.log(this.clientVisites)
+        this.clientVisiteService.delete(idVisite).subscribe((res: HttpResponse<any>) => {
+                this.success = true;
+            }
+        );
+        console.log(this.clientVisites)
 
-                            // recherche le client de la visite pour le mettre à null
-                            for (let i = 0; i <this.visite.clients.length; i++) {
-                                if (this.client.id === this.visite.clients[i].id) {
-                                    // mettre le client à null
-
-                                    console.log(this.visite.clients[i])
-                                    this.visite.clients[i]= null;
-                                    console.log(this.visite.clients[i])
-
-                                    this.visiteService.updateSansConvert(this.visite).subscribe(
-                                        (res: HttpResponse<Visite>) => {
-                                            this.visite = res.body;
-                                            console.log('update visite');
-                                            console.log(this.visite.clients[i])
-                                            this.success = true;
-                                        },
-                                        (res: HttpErrorResponse) => this.onError(res.message)
-                                    );
-                                }
-                            }
-
-                        });
-
-                });
-        });*/
     }
     private onError(error) {
         this.jhiAlertService.error(error.message, null, null);
