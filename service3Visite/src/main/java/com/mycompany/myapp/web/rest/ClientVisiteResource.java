@@ -104,6 +104,18 @@ public class ClientVisiteResource {
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(clientVisite));
     }
 
+
+
+    //ajout
+
+    @GetMapping("/client-visites/{idClient}/client")
+    @Timed
+    public List<ClientVisite> findAllClientVisiteByIdClient(@PathVariable("idClient")Long idClient){
+        log.debug("REST request to get all Client visites of client");
+        return clientVisiteRepository.findAllClientVisiteByIdClient(idClient);
+    }
+
+
     /**
      * DELETE  /client-visites/:id : delete the "id" clientVisite.
      *

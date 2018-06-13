@@ -1,9 +1,12 @@
 package com.mycompany.myapp.repository;
 
 import com.mycompany.myapp.domain.ClientVisite;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
+
+import java.util.List;
 
 
 /**
@@ -12,5 +15,8 @@ import org.springframework.data.jpa.repository.*;
 @SuppressWarnings("unused")
 @Repository
 public interface ClientVisiteRepository extends JpaRepository<ClientVisite, Long> {
+
+    @Query("select clientVisite from ClientVisite  clientVisite where clientVisite.idClient =:idClient")
+    List<ClientVisite> findAllClientVisiteByIdClient(@Param("idClient")Long idClient);
 
 }
