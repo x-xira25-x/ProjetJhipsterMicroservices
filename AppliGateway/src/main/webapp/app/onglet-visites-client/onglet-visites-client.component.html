@@ -16,7 +16,7 @@
         <strong>Désistement échoué</strong> Merci d'essayer plus tard
     </div>
 
-    <div class="table-responsive" *ngIf="visites">
+    <div class="table-responsive" *ngIf="clientVisites">
         <table class="table table-striped">
             <thead>
             <tr>
@@ -30,26 +30,24 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let visite of visites ;trackBy: trackId">
-                <td><a [routerLink]="['../visite', visite.id ]">{{visite.id}}</a></td>
-                <td>{{visite.dateDebut | date:'hh:mm a dd/MM/yyyy'}}</td>
-                <td>{{visite.dateFin | date:'hh:mm a dd/MM/yyyy'}}</td>
+            <tr *ngFor="let clientVisite of clientVisites ;trackBy: trackId">
+
                 <td>
-                    <div *ngIf="visite.agentImmobilier">
-                        <a [routerLink]="['../agent-immobilier', visite.agentImmobilier?.id ]" >{{visite.agentImmobilier?.nom}} {{visite.agentImmobilier.prenom}}</a>
-                    </div>
+                    <!--<div *ngIf="clientVisite.visite">-->
+                        <a [routerLink]="['../visite', clientVisite.visite?.id ]" >{{clientVisite.visite?.id}}</a>
+                    <!--</div>-->
                 </td>
-                <td>
-                    <div *ngIf="visite.bien">
-                        <a [routerLink]="['../bien', visite.bien?.id ]" >{{visite.bien?.id}}</a>
-                    </div>
+
+                <!-- <td><a [routerLink]="['../visite', visite.id ]">{{clientVisite.visite}}</a></td>-->
+               <td>{{clientVisite.visite.dateDebut | date:'hh:mm a dd/MM/yyyy'}}</td>
+                 <td>{{clientVisite.visite.dateFin | date:'hh:mm a dd/MM/yyyy'}}</td>
+                  <td>
+                    <a [routerLink]="['../agent-immobilier', clientVisite.visite.idAgentImmobilier ]" >{{clientVisite.visite.idAgentImmobilier}} </a>
                 </td>
-                <td *jhiHasAnyAuthority="'ROLE_ADMIN'">
-                    <div *ngIf="visite.clients">
-                      <span *ngFor="let client of visite.clients; let last = last">
-                     <a [routerLink]="['/client', client?.id ]">{{client.id}}</a>{{last ? '' : ', '}}
-                    </span>
-                    </div>
+                <td >
+                    <a [routerLink]="['../bien', clientVisite.visite.idBien ]" >
+                    {{clientVisite.visite.idBien}}
+                    </a>
                 </td>
                 <td class="text-right">
                     <!--ajout bouton suppression du client à la visite-->
