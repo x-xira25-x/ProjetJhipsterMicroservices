@@ -11,6 +11,7 @@ import { VisitePopupService } from './visite-popup.service';
 import { VisiteService } from './visite.service';
 import { EtatVisite, EtatVisiteService } from '../etat-visite';
 import {AgentImmobilier, AgentImmobilierService} from "../agent-immobilier";
+import {Bien, BienService} from "../bien";
 
 @Component({
     selector: 'jhi-visite-dialog',
@@ -23,6 +24,8 @@ export class VisiteDialogComponent implements OnInit {
     agentsImmo: AgentImmobilier[];
     agentImmobilier: AgentImmobilier;
     etatvisites: EtatVisite[];
+    biens : Bien[];
+    bien: Bien;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -31,6 +34,7 @@ export class VisiteDialogComponent implements OnInit {
         private etatVisiteService: EtatVisiteService,
         private eventManager: JhiEventManager,
         private agentImmoService: AgentImmobilierService,
+        private bienService : BienService,
     ) {
     }
 
@@ -40,8 +44,11 @@ export class VisiteDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<EtatVisite[]>) => { this.etatvisites = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.agentImmoService.query().subscribe((res :HttpResponse<AgentImmobilier[]>) => {this.agentsImmo =res.body;
             console.log(this.agentsImmo)},(res: HttpErrorResponse) => this.onError(res.message) )
-    }
 
+        this.bienService.query().subscribe((res :HttpResponse<Bien[]>) => {this.biens =res.body;
+            console.log(this.biens)},(res: HttpErrorResponse) => this.onError(res.message) )
+    }
+v
     clear() {
         this.activeModal.dismiss('cancel');
     }
@@ -50,10 +57,12 @@ export class VisiteDialogComponent implements OnInit {
         this.isSaving = true;
         if (this.visite.id !== undefined) {
             this.visite.idAgentImmobilier = this.agentImmobilier.id;
+            this.visite.idBien = this.bien.id
             this.subscribeToSaveResponse(
                 this.visiteService.update(this.visite));
         } else {
             this.visite.idAgentImmobilier = this.agentImmobilier.id;
+            this.visite.idBien = this.bien.id
             this.subscribeToSaveResponse(
                 this.visiteService.create(this.visite));
         }
@@ -81,8 +90,12 @@ export class VisiteDialogComponent implements OnInit {
     trackEtatVisiteById(index: number, item: EtatVisite) {
         return item.id;
     }
-    trackAgentImmoById(index: number, item: AgentImmobilier){
 
+    trackAgentImmoById(index: number, item: AgentImmobilier){
+        return item.id;
+    }
+
+    trackBienById(index: number, item: Bien){
         return item.id;
     }
 }
