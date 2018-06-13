@@ -10,6 +10,7 @@ import { ClientVisite } from './client-visite.model';
 import { ClientVisitePopupService } from './client-visite-popup.service';
 import { ClientVisiteService } from './client-visite.service';
 import { Visite, VisiteService } from '../visite';
+import {Client} from "../client";
 
 @Component({
     selector: 'jhi-client-visite-dialog',
@@ -19,7 +20,6 @@ export class ClientVisiteDialogComponent implements OnInit {
 
     clientVisite: ClientVisite;
     isSaving: boolean;
-
     visites: Visite[];
 
     constructor(
@@ -47,6 +47,7 @@ export class ClientVisiteDialogComponent implements OnInit {
             this.subscribeToSaveResponse(
                 this.clientVisiteService.update(this.clientVisite));
         } else {
+            console.log(this.clientVisite)
             this.subscribeToSaveResponse(
                 this.clientVisiteService.create(this.clientVisite));
         }

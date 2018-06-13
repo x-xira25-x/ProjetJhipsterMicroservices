@@ -4,12 +4,14 @@ import {Client, ClientService} from "../entities/client";
 import {EtatBien, EtatBienService} from "../entities/etat-bien";
 import {TypeBien, TypeBienService} from "../entities/type-bien";
 import {Visite, VisiteService} from "../entities/visite";
-import {Principal} from "../shared";
+import {Principal, User, UserService} from "../shared";
 import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
 import {Bien, BienService} from "../entities/bien";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {ActivatedRoute} from "@angular/router";
 import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
+import { ClientVisiteService} from "../entities/client-visite";
+import {ClientVisite} from "./AvendreClient-visite.model";
 
 @Component({
   selector: 'jhi-avendre-visite-dialogue',
@@ -25,7 +27,10 @@ export class AvendreVisiteDialogueComponent implements OnInit {
     settingsAccount: any;
     etatbiens: EtatBien[];
     visite: Visite;
+    visites: Visite[];
     success: boolean;
+    clientVisite: ClientVisite;
+
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -38,7 +43,9 @@ export class AvendreVisiteDialogueComponent implements OnInit {
         private elementRef: ElementRef,
         private eventManager: JhiEventManager,
         private principal: Principal,
-        private visiteService: VisiteService
+        private visiteService: VisiteService,
+        private userService: UserService,
+        private clientVisiteService : ClientVisiteService,
     ) {
     }
     ngOnInit() {
@@ -51,44 +58,39 @@ export class AvendreVisiteDialogueComponent implements OnInit {
             .subscribe((res: HttpResponse<Client[]>) => { this.clients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.etatBienService.query()
             .subscribe((res: HttpResponse<EtatBien[]>) => { this.etatbiens = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+
     }
 
     inscription(idVisite) {
         console.log('entre dans la inscripton');
-        console.log('id visite' + idVisite);
+        console.log('id visite :' + idVisite);
         // récupérer  client
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
-            this.clientService.findIdClient(this.settingsAccount.login).subscribe(
+            console.log(this.settingsAccount)
+            // récupère le user
+            this.userService.find(this.settingsAccount.login).subscribe((res: HttpResponse<User>) => {
+                console.log(res.body)
+            //grace au id user on récuère le client
+            this.clientService.findIdClient(res.body.id).subscribe(
                 (res: HttpResponse<Client>) => {
                     this.client = res.body;
-                    console.log('client' + this.client.id);
-                    // essayer de récupérer la visite et mettre le client dedans
+                    // récupérer la visite
                     this.visiteService.find(idVisite).subscribe(
                         (res: HttpResponse<Visite>) => {
                             this.visite = res.body;
-                            // ajout du client dans visite.client
-                         /*   this.visite.clients[this.visite.clients.length + 1] = this.client;
-
-                            this.visiteService.updateSansConvert(this.visite).subscribe(
-                                (res: HttpResponse<Visite>) => {
-                                    this.visite = res.body;
-                                    console.log('update visite');
-                                    console.log(this.success);
-
-                                },
-                                (res: HttpErrorResponse) => this.onError(res.message)
-                            );*/
+                            console.log(this.visite)
+                            // ajout du client dans Clientvisite, création d'un objet ClientVisite pour ajouter idclient et visite
+                            console.log("création clientVisite" +this.client.id)
+                            console.log("cleintVisite" + this.clientVisite)
+                              this.clientVisite ={idClient:this.client.id,visite:this.visite}
+                            //Création de la ligne dans la table clientVisite
+                            this.clientVisiteService.create(this.clientVisite).subscribe()
                             // window.location.reload(false);
                             this.success = true;
                         });
-                    /*   this.bienService.ajoutClientVisite(idVisite,this.client.id).subscribe(
-                           (res: HttpResponse<Visite>) => {
-                               this.visite = res.body;
-                           },
-                           (res: HttpErrorResponse) => this.onError(res.message)
-                       );*/
                 });
+            })
         });
     }
     copyAccount(account) {

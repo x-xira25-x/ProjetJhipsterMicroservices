@@ -31,7 +31,7 @@ export class ClientService {
         return this.http.get<Client>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
-    // ajout méthode qui retourne du client par login
+    // ajout méthode qui retourne du client par id
     findIdClient(id: number): Observable<EntityResponseType> {
         return this.http.get<Client>(`http://localhost:8080/projetjhipstermicroservices/api/clientIdUser/${id}`, {observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));

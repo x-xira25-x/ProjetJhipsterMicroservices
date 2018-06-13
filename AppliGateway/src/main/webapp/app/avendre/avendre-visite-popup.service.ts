@@ -24,7 +24,7 @@ export class AvendreVisitePopupService {
     }
 
     open(component: Component, id?: number | any): Promise<NgbModalRef> {
-        console.log('open service');
+        console.log('open service avendrevisitepopservice');
     return new Promise<NgbModalRef>((resolve, reject) => {
     const isOpen = this.ngbModalRef !== null;
     if (isOpen) {
@@ -33,11 +33,9 @@ export class AvendreVisitePopupService {
 
         if (id) {
             this.visiteService.queryVisiteBien(id).subscribe((res: HttpResponse<Visite[]>) => {
-                console.log('appel la fonction');
+                console.log('appel la fonction queryvisitebien');
                 const visite: Visite[] = res.body;
                 this.visites = res.body;
-                console.log(this.visites);
-                console.log(visite);
 
                 /*   if (visite.dateDebut) {
                        visite.dateDebut = {
