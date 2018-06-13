@@ -40,7 +40,6 @@ export class VisiteDialogComponent implements OnInit {
             .subscribe((res: HttpResponse<EtatVisite[]>) => { this.etatvisites = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.agentImmoService.query().subscribe((res :HttpResponse<AgentImmobilier[]>) => {this.agentsImmo =res.body;
             console.log(this.agentsImmo)},(res: HttpErrorResponse) => this.onError(res.message) )
-
     }
 
     clear() {
@@ -82,7 +81,6 @@ export class VisiteDialogComponent implements OnInit {
     trackEtatVisiteById(index: number, item: EtatVisite) {
         return item.id;
     }
-
     trackAgentImmoById(index: number, item: AgentImmobilier){
 
         return item.id;
