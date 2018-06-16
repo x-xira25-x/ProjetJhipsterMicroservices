@@ -1,0 +1,26 @@
+
+{
+    "appliGatewayApp": {
+        "etatVisite" : {
+            "home": {
+                "title": "EtatVisites",
+                "createLabel": "Créer un nouveau Etat Visite",
+                "createOrEditLabel": "Créer ou éditer un Etat Visite"
+            },
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Etat Visite {{ id }} ?"
+            },
+            "detail": {
+                "title": "Etat Visite"
+            },
+            "nom": "Nom"
+        }
+    },
+    "service3VisiteApp": {
+        "etatVisite" : {
+            "created": "Un nouveau Etat Visite a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Etat Visite avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Etat Visite avec l'identifiant {{ param }} a été supprimé"
+        }
+    }
+}

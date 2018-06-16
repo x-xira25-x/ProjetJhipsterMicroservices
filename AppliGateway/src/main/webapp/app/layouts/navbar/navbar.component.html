@@ -30,6 +30,18 @@
                     </a>
                 </li>
             </div>
+            <!--onglet les visites du client-->
+
+            <div *jhiHasAnyAuthority="'ROLE_USER'" class="navbar-collapse collapse" iid="visiteClient-menu" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="VisitesClient" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        <span>Visites</span>
+                    </span>
+                    </a>
+                </li>
+            </div>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -76,6 +88,24 @@
                         <a class="dropdown-item" routerLink="etat-bien" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
                             <span jhiTranslate="global.menu.entities.etatBien">Etat Bien</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="etat-visite" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.etatVisite">Etat Visite</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="visite" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.visite">Visite</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="client-visite" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.clientVisite">Client Visite</span>
                         </a>
                     </li>
                     <!-- jhipster-needle-add-entity-to-menu - JHipster will add entities to the menu here -->

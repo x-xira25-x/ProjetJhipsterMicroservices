@@ -1,0 +1,32 @@
+
+<div *ngIf="clientVisite">
+    <h2><span jhiTranslate="appliGatewayApp.clientVisite.detail.title">Client Visite</span> {{clientVisite.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="appliGatewayApp.clientVisite.idClient">Id Client</span></dt>
+        <dd>
+            <span>{{clientVisite.idClient}}</span>
+        </dd>
+        <dt><span jhiTranslate="appliGatewayApp.clientVisite.visite">Visite</span></dt>
+        <dd>
+            <div *ngIf="clientVisite.visite">
+                <a [routerLink]="['/visite', clientVisite.visite?.id]">{{clientVisite.visite?.id}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'client-visite/'+ clientVisite.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

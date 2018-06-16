@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "visite",
+            "otherEntityName": "visite",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "idClient",
+            "fieldType": "Long",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20180608151938",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "client_visite",
+    "jpaMetamodelFiltering": false,
+    "pagination": "no",
+    "microserviceName": "service3Visite",
+    "searchEngine": false
+}

@@ -13,6 +13,9 @@
                 "bien": "Bien",
                 "typeBien": "Type Bien",
                 "etatBien": "Etat Bien",
+                "etatVisite": "Etat Visite",
+                "visite": "Visite",
+                "clientVisite": "Client Visite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

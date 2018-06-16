@@ -1,0 +1,27 @@
+
+{
+    "appliGatewayApp": {
+        "clientVisite" : {
+            "home": {
+                "title": "Client Visites",
+                "createLabel": "Create a new Client Visite",
+                "createOrEditLabel": "Create or edit a Client Visite"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete Client Visite {{ id }}?"
+            },
+            "detail": {
+                "title": "Client Visite"
+            },
+            "idClient": "Id Client",
+            "visite": "Visite"
+        }
+    },
+    "service3VisiteApp": {
+        "clientVisite" : {
+            "created": "A new Client Visite is created with identifier {{ param }}",
+            "updated": "A Client Visite is updated with identifier {{ param }}",
+            "deleted": "A Client Visite is deleted with identifier {{ param }}"
+        }
+    }
+}
