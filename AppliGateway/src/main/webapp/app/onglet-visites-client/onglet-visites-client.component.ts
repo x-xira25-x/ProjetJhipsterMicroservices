@@ -6,6 +6,7 @@ import {JhiAlertService, JhiEventManager} from "ng-jhipster";
 import {AccountService, Principal, User, UserService} from "../shared";
 import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
 import {ClientVisite, ClientVisiteService} from "../entities/client-visite";
+import {AgentImmobilier, AgentImmobilierService} from "../entities/agent-immobilier";
 
 @Component({
   selector: 'jhi-onglet-visites-client',
@@ -26,6 +27,9 @@ export class OngletVisitesClientComponent implements OnInit {
     success: boolean;
     clientVisites: ClientVisite[];
     clientVisite: ClientVisite;
+    agentImmos : AgentImmobilier[];
+    incrementation: number;
+
 
     constructor(
         private visiteService: VisiteService,
@@ -37,6 +41,7 @@ export class OngletVisitesClientComponent implements OnInit {
         private clientService: ClientService,
         private eventManager: JhiEventManager,
         private userService: UserService,
+        private agentImmoService: AgentImmobilierService,
 
 
 
@@ -52,10 +57,7 @@ export class OngletVisitesClientComponent implements OnInit {
                         (res: HttpResponse<Client>) => {
                             this.client = res.body;
                             console.log("client " + this.client);
-
-
                         }
-
                     )*/
         /*this.visiteService.queryByclient(this.client.id).subscribe(
             (res: HttpResponse<Visite[]>) => {
@@ -80,7 +82,12 @@ export class OngletVisitesClientComponent implements OnInit {
                         this.clientVisiteService.queryVisiteByIdClient(this.client.id).subscribe(
                             (res: HttpResponse<ClientVisite[]>) => {
                                 this.clientVisites = res.body;
-
+                                // rechercher les nom et prenom des agent immo
+                                   this.agentImmoService.query().subscribe(
+                                       (res: HttpResponse<AgentImmobilier[]>) =>{
+                                           this.agentImmos=res.body;
+                                           console.log(this.agentImmos)
+                                       })
                             },
                             (res: HttpErrorResponse) => this.onError(res.message)
                         );
