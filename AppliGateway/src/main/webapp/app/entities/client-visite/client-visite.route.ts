@@ -11,7 +11,7 @@ export const clientVisiteRoute: Routes = [
         path: 'client-visite',
         component: ClientVisiteComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'appliGatewayApp.clientVisite.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -19,7 +19,7 @@ export const clientVisiteRoute: Routes = [
         path: 'client-visite/:id',
         component: ClientVisiteDetailComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'appliGatewayApp.clientVisite.home.title'
         },
         canActivate: [UserRouteAccessService]
@@ -31,7 +31,7 @@ export const clientVisitePopupRoute: Routes = [
         path: 'client-visite-new',
         component: ClientVisitePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'appliGatewayApp.clientVisite.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -41,7 +41,7 @@ export const clientVisitePopupRoute: Routes = [
         path: 'client-visite/:id/edit',
         component: ClientVisitePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'appliGatewayApp.clientVisite.home.title'
         },
         canActivate: [UserRouteAccessService],
@@ -51,7 +51,7 @@ export const clientVisitePopupRoute: Routes = [
         path: 'client-visite/:id/delete',
         component: ClientVisiteDeletePopupComponent,
         data: {
-            authorities: ['ROLE_USER'],
+            authorities: ['ROLE_USER','ROLE_AGENTIMMO'],
             pageTitle: 'appliGatewayApp.clientVisite.home.title'
         },
         canActivate: [UserRouteAccessService],
