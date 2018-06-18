@@ -30,6 +30,8 @@ export class AvendreVisiteDialogueComponent implements OnInit {
     visites: Visite[];
     success: boolean;
     clientVisite: ClientVisite;
+    clientsVisites: ClientVisite[];
+    visiteDouble:boolean;
 
 
     constructor(
@@ -84,10 +86,27 @@ export class AvendreVisiteDialogueComponent implements OnInit {
                             console.log("création clientVisite" +this.client.id)
                             console.log("cleintVisite" + this.clientVisite)
                               this.clientVisite ={idClient:this.client.id,visite:this.visite}
-                            //Création de la ligne dans la table clientVisite
-                            this.clientVisiteService.create(this.clientVisite).subscribe()
-                            // window.location.reload(false);
-                            this.success = true;
+                              // rechercher tout les visites client pour controle qu'il n'y ait pas 2x la meme ligne
+                            this.clientVisiteService.query().subscribe((res: HttpResponse<ClientVisite[]>) =>{
+                                this.clientsVisites = res.body
+                                this.visiteDouble=false;
+                                console.log("double" + this.visiteDouble)
+                                console.log(this.clientsVisites)
+                                for (let l =0; l < this.clientsVisites.length; l++) {
+                                  if(this.clientsVisites[l].idClient == this.client.id && this.clientsVisites[l].visite.id ==this.visite.id){
+                                      this.visiteDouble= true;
+                                  }
+                                }
+                                console.log("double" + this.visiteDouble)
+                                //Création de la ligne dans la table clientVisite
+                                if(this.visiteDouble ==false){
+                                    this.clientVisiteService.create(this.clientVisite).subscribe()
+                                    // window.location.reload(false);
+                                    this.success = true;}
+
+                            })
+
+
                         });
                 });
             })

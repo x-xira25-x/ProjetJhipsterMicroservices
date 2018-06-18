@@ -7,7 +7,9 @@
     <div class="alert alert-success" *ngIf="success">
         <strong>Inscription enregistrée!</strong>
     </div>
-
+    <div class="alert alert-danger" *ngIf="visiteDouble">
+        <strong>Vous êtes déjà inscrit à cette visite!</strong>
+    </div>
     <div class="alert alert-danger" *ngIf="error">
         <strong>Inscription échouée</strong> Merci d'essayer plus tard
     </div>
