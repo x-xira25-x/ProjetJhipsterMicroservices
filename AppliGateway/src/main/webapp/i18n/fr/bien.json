@@ -24,6 +24,11 @@
             "idClient": "Id Client",
             "etatBien": "Etat Bien",
             "typeBien": "Type Bien"
+        },
+        "Avendre" :
+        {"home":{
+            "title":"A vendre"
+        }
         }
     },
     "service2BienApp": {

@@ -11,7 +11,7 @@ export const avendreRoute: Routes = [
         component: AvendreComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'Avendre'
+            pageTitle: 'appliGatewayApp.Avendre.home.title'
         },
     }
 ];
