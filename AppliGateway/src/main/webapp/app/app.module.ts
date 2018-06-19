@@ -27,10 +27,8 @@ import {
     ActiveMenuDirective,
     ErrorComponent
 } from './layouts';
-import { AvendreComponent } from './avendre/avendre.component';
-import {AvendreModule} from "./avendre/avendre.module";
-import { OngletVisitesClientComponent } from './onglet-visites-client/onglet-visites-client.component';
-import {OngletVisitesClientModule} from "./onglet-visites-client/onglet-visites-client.module";
+import {AvendreModule} from './avendre/avendre.module';
+import {OngletVisitesClientModule} from './onglet-visites-client/onglet-visites-client.module';
 
 @NgModule({
     imports: [

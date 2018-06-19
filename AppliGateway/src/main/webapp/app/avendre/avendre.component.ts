@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Bien, BienService} from "../entities/bien";
-import {Subscription} from "rxjs/Subscription";
-import {TypeBien, TypeBienService} from "../entities/type-bien";
-import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
-import {Principal} from "../shared";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
+import {Bien, BienService} from '../entities/bien';
+import {Subscription} from 'rxjs/Subscription';
+import {TypeBien, TypeBienService} from '../entities/type-bien';
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster';
+import {Principal} from '../shared';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
 
 @Component({
   selector: 'jhi-avendre',
@@ -71,6 +71,4 @@ export class AvendreComponent implements OnInit {
             (res: HttpErrorResponse) => this.onError(res.message)
         );
     }
-
-
 }

@@ -53,12 +53,12 @@ export class AgentImmobilierDialogComponent implements OnInit {
 
         });
         this.principal.identity().then((account) => {
-            //par rapport au login avoir l'id du user
-            console.log(this.copyAccount(account).login)
+            // par rapport au login avoir l'id du user
+            console.log(this.copyAccount(account).login);
             this.userService.find(this.copyAccount(account).login).subscribe(resp => {
                 this.user = resp.body;
-            })
-        })
+            });
+        });
     }
 
     clear() {

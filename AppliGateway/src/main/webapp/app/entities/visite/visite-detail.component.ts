@@ -6,7 +6,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { Visite } from './visite.model';
 import { VisiteService } from './visite.service';
-import {AgentImmobilier, AgentImmobilierService} from "../agent-immobilier";
+import {AgentImmobilier, AgentImmobilierService} from '../agent-immobilier';
 
 @Component({
     selector: 'jhi-visite-detail',
@@ -40,10 +40,10 @@ export class VisiteDetailComponent implements OnInit, OnDestroy {
                 this.visite = visiteResponse.body;
             });
         this.agentImmoService.query().subscribe(
-            (res: HttpResponse<AgentImmobilier[]>) =>{
-                this.agentImmos=res.body;
-                console.log(this.agentImmos)
-            })
+            (res: HttpResponse<AgentImmobilier[]>) => {
+                this.agentImmos = res.body;
+                console.log(this.agentImmos);
+            });
     }
     previousState() {
         window.history.back();

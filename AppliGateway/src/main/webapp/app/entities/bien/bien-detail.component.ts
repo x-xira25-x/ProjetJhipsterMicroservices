@@ -41,11 +41,11 @@ export class BienDetailComponent implements OnInit, OnDestroy {
         this.bienService.find(id)
             .subscribe((bienResponse: HttpResponse<Bien>) => {
                 this.bien = bienResponse.body;
-                console.log(this.bien.idClient)
-                this.clientService.find(this.bien.idClient).subscribe( resp=>{
-                    this.client= resp.body;
-                    console.log(this.client)
-                })
+                console.log(this.bien.idClient);
+                this.clientService.find(this.bien.idClient).subscribe( resp => {
+                    this.client = resp.body;
+                    console.log(this.client);
+                });
             });
     }
     byteSize(field) {

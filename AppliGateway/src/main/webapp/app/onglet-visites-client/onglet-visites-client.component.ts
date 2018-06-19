@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {Visite, VisiteService} from "../entities/visite";
-import {Client, ClientService} from "../entities/client";
-import {Bien, BienService} from "../entities/bien";
-import {JhiAlertService, JhiEventManager} from "ng-jhipster";
-import {AccountService, Principal, User, UserService} from "../shared";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {ClientVisite, ClientVisiteService} from "../entities/client-visite";
-import {AgentImmobilier, AgentImmobilierService} from "../entities/agent-immobilier";
+import {Visite, VisiteService} from '../entities/visite';
+import {Client, ClientService} from '../entities/client';
+import {Bien, BienService} from '../entities/bien';
+import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
+import {AccountService, Principal, User, UserService} from '../shared';
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {ClientVisite, ClientVisiteService} from '../entities/client-visite';
+import {AgentImmobilier, AgentImmobilierService} from '../entities/agent-immobilier';
 
 @Component({
   selector: 'jhi-onglet-visites-client',
@@ -16,20 +16,18 @@ import {AgentImmobilier, AgentImmobilierService} from "../entities/agent-immobil
 export class OngletVisitesClientComponent implements OnInit {
 
     visites: Visite[];
-    login:String;
+    login: String;
     settingsAccount: any;
     visite: Visite;
     isSaving: boolean;
     client: Client;
     biens: Bien[];
-    account: Account
+    account: Account;
     clients: Client[];
     success: boolean;
     clientVisites: ClientVisite[];
     clientVisite: ClientVisite;
     agentImmos : AgentImmobilier[];
-    incrementation: number;
-
 
     constructor(
         private visiteService: VisiteService,
@@ -42,13 +40,10 @@ export class OngletVisitesClientComponent implements OnInit {
         private eventManager: JhiEventManager,
         private userService: UserService,
         private agentImmoService: AgentImmobilierService,
-
-
-
     ) { }
 
     loadAll() {
-        //récupérer le login
+        // récupérer le login
         /*
                 this.principal.identity().then((account) => {
                     this.account = account;
@@ -74,8 +69,8 @@ export class OngletVisitesClientComponent implements OnInit {
             // recupérer l'id du client
 
             this.userService.find(this.settingsAccount.login).subscribe((res: HttpResponse<User>) => {
-                console.log(res.body)
-                //grace au id user on récupère le client
+                console.log(res.body);
+                // grace au id user on récupère le client
                 this.clientService.findIdClient(res.body.id).subscribe(
                     (res: HttpResponse<Client>) => {
                         this.client = res.body;
@@ -84,28 +79,28 @@ export class OngletVisitesClientComponent implements OnInit {
                                 this.clientVisites = res.body;
                                 // rechercher les nom et prenom des agent immo
                                    this.agentImmoService.query().subscribe(
-                                       (res: HttpResponse<AgentImmobilier[]>) =>{
-                                           this.agentImmos=res.body;
-                                           console.log(this.agentImmos)
-                                       })
+                                       ( res: HttpResponse<AgentImmobilier[]>) => {
+                                           this.agentImmos = res.body;
+                                           console.log(this.agentImmos);
+                                       });
                             },
                             (res: HttpErrorResponse) => this.onError(res.message)
                         );
-                    })
-            })
+                    });
+                });
             });
     }
 
 // suppression client à la visite
     desister(idVisite) {
         console.log('entre dans la inscripton');
-        console.log(idVisite)
-        console.log(this.clientVisites)
+        console.log(idVisite);
+        console.log(this.clientVisites);
         this.clientVisiteService.delete(idVisite).subscribe((res: HttpResponse<any>) => {
                 this.success = true;
             }
         );
-        console.log(this.clientVisites)
+        console.log(this.clientVisites);
 
     }
     private onError(error) {

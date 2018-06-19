@@ -5,7 +5,6 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { ClientVisite } from './client-visite.model';
 import { createRequestOption } from '../../shared';
-import {Client} from "../client/client.model";
 
 export type EntityResponseType = HttpResponse<ClientVisite>;
 
