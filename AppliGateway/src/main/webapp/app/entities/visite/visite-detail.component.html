@@ -1,32 +1,46 @@
 
 <div *ngIf="visite">
-    <h2><span jhiTranslate="appliGatewayApp.visite.detail.title">Visite</span> {{visite.id}}</h2>
+    <h2><span jhiTranslate="appliGatewayApp.visite.detail.title">Visite</span> {{visite.id}} - {{visite.etatVisite?.nom}}</h2>
     <hr>
+
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="appliGatewayApp.visite.dateDebut">Date Debut</span></dt>
-        <dd>
-            <span>{{visite.dateDebut | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="appliGatewayApp.visite.dateFin">Date Fin</span></dt>
-        <dd>
-            <span>{{visite.dateFin | date:'medium'}}</span>
-        </dd>
-        <dt><span jhiTranslate="appliGatewayApp.visite.idAgentImmobilier">Id Agent Immobilier</span></dt>
-        <dd>
-            <span>{{visite.idAgentImmobilier}}</span>
-        </dd>
-        <dt><span jhiTranslate="appliGatewayApp.visite.idBien">Id Bien</span></dt>
-        <dd>
-            <span>{{visite.idBien}}</span>
-        </dd>
-        <dt><span jhiTranslate="appliGatewayApp.visite.etatVisite">Etat Visite</span></dt>
-        <dd>
-            <div *ngIf="visite.etatVisite">
-                <a [routerLink]="['/etat-visite', visite.etatVisite?.id]">{{visite.etatVisite?.id}}</a>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+                <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="appliGatewayApp.visite.dateDebut">Date de début</span></dt>
+
+                    <span>{{visite.dateDebut | date:'medium'}}</span>
+
+
+                </dl>
             </div>
-        </dd>
-    </dl>
+            <div class="col-md-3">
+                <dt><span jhiTranslate="appliGatewayApp.visite.dateFin">Date Fin</span></dt>
+
+                <span>{{visite.dateFin | date:'medium'}}</span>
+
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <dl class="row-md jh-entity-details">
+            <dt><span jhiTranslate="appliGatewayApp.visite.idAgentImmobilier">Agent Immobilier</span></dt>
+
+            <dd *ngFor="let agent of agentImmos ;trackBy: trackId">
+                <span *ngIf="visite.idAgentImmobilier == agent.id"><a [routerLink]="['/agent-immobilier', visite.idAgentImmobilier ]">{{agent.nom}} {{agent.prenom}}</a></span>
+                <p></p>
+            </dd>
+
+            <dt><span jhiTranslate="appliGatewayApp.visite.idBien">Id Bien</span></dt>
+            <dd>
+                <span><a [routerLink]="['/bien', visite.idBien ]">{{visite.idBien}}</a></span>
+            </dd>
+
+
+        </dl>
+    </div>
+
 
     <button type="submit"
             (click)="previousState()"
@@ -34,7 +48,7 @@
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button"
+    <button *jhiHasAnyAuthority="'ROLE_AGENTIMMO'" type="button"
             [routerLink]="['/', { outlets: { popup: 'visite/'+ visite.id + '/edit'} }]"
             replaceUrl="true"
             queryParamsHandling="merge"

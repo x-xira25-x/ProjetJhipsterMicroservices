@@ -6,6 +6,7 @@ import { JhiEventManager } from 'ng-jhipster';
 
 import { Visite } from './visite.model';
 import { VisiteService } from './visite.service';
+import {AgentImmobilier, AgentImmobilierService} from "../agent-immobilier";
 
 @Component({
     selector: 'jhi-visite-detail',
@@ -16,11 +17,13 @@ export class VisiteDetailComponent implements OnInit, OnDestroy {
     visite: Visite;
     private subscription: Subscription;
     private eventSubscriber: Subscription;
+    agentImmos: AgentImmobilier[];
 
     constructor(
         private eventManager: JhiEventManager,
         private visiteService: VisiteService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private agentImmoService: AgentImmobilierService,
     ) {
     }
 
@@ -36,6 +39,11 @@ export class VisiteDetailComponent implements OnInit, OnDestroy {
             .subscribe((visiteResponse: HttpResponse<Visite>) => {
                 this.visite = visiteResponse.body;
             });
+        this.agentImmoService.query().subscribe(
+            (res: HttpResponse<AgentImmobilier[]>) =>{
+                this.agentImmos=res.body;
+                console.log(this.agentImmos)
+            })
     }
     previousState() {
         window.history.back();

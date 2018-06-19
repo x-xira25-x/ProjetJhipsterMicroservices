@@ -37,7 +37,7 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idAgentImmobilier" for="field_idAgentImmobilier">Id Agent Immobilier</label>
+            <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idAgentImmobilier" for="field_idAgentImmobilier">Agent Immobilier</label>
             <select class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier" [(ngModel)]="agentImmobilier" required >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="agentIdOption === agentImmobilier ? agentImmobilier: agentIdOption" *ngFor="let agentIdOption of agentsImmo; trackBy: trackAgentImmoById">{{agentIdOption.id}}</option>

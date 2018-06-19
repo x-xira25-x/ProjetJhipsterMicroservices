@@ -26,8 +26,8 @@
     "projetJhipsterMicroservicesApp": {
         "agentImmobilier" : {
             "created": "Un nouveau Agent Immobilier a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Agent Immobilier avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Agent Immobilier avec l'identifiant {{ param }} a été supprimé"
+            "updated": "L' Agent Immobilier avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "L' Agent Immobilier avec l'identifiant {{ param }} a été supprimé"
         }
     }
 }

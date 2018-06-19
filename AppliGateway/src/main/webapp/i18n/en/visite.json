@@ -13,11 +13,11 @@
             "detail": {
                 "title": "Visite"
             },
-            "dateDebut": "Date Debut",
-            "dateFin": "Date Fin",
-            "idAgentImmobilier": "Id Agent Immobilier",
+            "dateDebut": "Date de début",
+            "dateFin": "Date de Fin",
+            "idAgentImmobilier": "Agent Immobilier",
             "idBien": "Id Bien",
-            "etatVisite": "Etat Visite",
+            "etatVisite": "Etat de la visite",
             "clientVisite": "Client Visite"
         }
     },

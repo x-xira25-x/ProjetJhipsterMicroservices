@@ -21,7 +21,7 @@
                 <th><span>ID</span></th>
                 <th><span>Date de début</span></th>
                 <th><span>Date de fin</span></th>
-                <th><span>Vendeur</span></th>
+                <th><span>Agent immobilier</span></th>
                 <th><span>Bien</span></th>
                <!-- <th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></th>-->
                 <th></th>
@@ -33,7 +33,7 @@
                 <td>{{visite.dateDebut | date:'hh:mm a MM/d/yyyy'}}</td>
                 <td>{{visite.dateFin | date:'h:mm a MM/d/yyyy '}}</td>
                 <td>
-                    <a [routerLink]="['../vendeur', visite.idAgentImmobilier ]" >{{visite.idAgentImmobilier}}</a>
+                    <a [routerLink]="['../agent-immobilier', visite.idAgentImmobilier ]" >{{visite.idAgentImmobilier}}</a>
                 </td>
                 <td>
                     <a [routerLink]="['../bien', visite.idBien ]" >{{visite.idBien}}</a>

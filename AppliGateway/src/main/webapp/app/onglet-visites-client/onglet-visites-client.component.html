@@ -23,13 +23,13 @@
                 <th><span>ID</span></th>
                 <th><span>Date de début</span></th>
                 <th><span>Date de fin</span></th>
-                <th><span>Vendeur</span></th>
+                <th><span>Agent immobilier</span></th>
                 <th><span>Bien</span></th>
                 <!--<th *jhiHasAnyAuthority="'ROLE_ADMIN'"><span>Client</span></th>-->
                 <th></th>
             </tr>
             </thead>
-            <tbody>
+            <tbody >
             <tr *ngFor="let clientVisite of clientVisites ;trackBy: trackId" >
 
                 <td>
@@ -44,10 +44,11 @@
                 <span *ngFor="let agent of agentImmos ;trackBy: trackId">
                 <td>
                       <span *ngIf="clientVisite.visite.idAgentImmobilier == agent.id">
-                          {{agent.nom}} {{agent.prenom}}
+                      <p>   {{agent.nom}} {{agent.prenom}}</p>
                       </span>
 
-                </td></span>
+                </td>
+                </span>
                 <td>
                     <a [routerLink]="['../bien', clientVisite.visite.idBien ]" >
                     {{clientVisite.visite.idBien}}
