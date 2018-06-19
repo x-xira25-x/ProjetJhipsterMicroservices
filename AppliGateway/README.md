@@ -43,9 +43,11 @@ Cette application est configurée pour Service Discovery et Configuration avec J
 ``docker-compose -f src/main/docker/jhipster-registry.yml up``
  http://127.0.0.1:8761/#/: accès à jhispter registry
  - lancer la commande suivant pour lancer le client: 
-    `` yarn install``
+    `` yarn start``
 
-
+#### Premier démarrage
+Après avoir installé Node,  exécuter la commande suivante pour installer les outils de développement.
+``yarn install``
 
 
 ## Development
@@ -71,11 +73,7 @@ auto-refreshes when files change on your hard drive.
     ./mvnw
     yarn start
 
-[Yarn][] is also used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
-specifying a newer version in [package.json](package.json). You can also run `yarn update` and `yarn install` to manage dependencies.
-Add the `help` flag on any command to see how you can use it. For example, `yarn help update`.
 
-The `yarn run` command will list all of the scripts available to run for this project.
 
 ### Service workers
 
