@@ -17,6 +17,17 @@ Il contient aussi un jhispter-registry.
 - internationlization
 - Anglais pour le language native et français
 
+Afin d'avoir une meilleure interface pour les base de données, j'ai installé phpMyAdmin dans un docker qui doit se trouver dans le meme réseau que les autres dockers afin de pouvoir les faire communiquer.
+
+Je lance tous mes docker grâce à Kitematic
+
+## Base de données
+
+Données pour la connexion dans phpMyAdmin
+
+- mysqlgateway: 172.18.0.4 mot de passe: 1234
+- mysql microservice (service 1) : 172.18.0.1 Mot de passe : 1234
+
 
 
 
