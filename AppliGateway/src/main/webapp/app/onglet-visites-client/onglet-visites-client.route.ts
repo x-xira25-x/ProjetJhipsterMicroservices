@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import {OngletVisitesClientComponent} from "./onglet-visites-client.component";
-
-
+import {OngletVisitesClientComponent} from './onglet-visites-client.component';
 
 export const ongletVisitesClientRoute: Routes = [
     {

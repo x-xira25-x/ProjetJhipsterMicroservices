@@ -1,17 +1,17 @@
 import {Component, ElementRef, OnDestroy, OnInit} from '@angular/core';
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {Client, ClientService} from "../entities/client";
-import {EtatBien, EtatBienService} from "../entities/etat-bien";
-import {TypeBien, TypeBienService} from "../entities/type-bien";
-import {Visite, VisiteService} from "../entities/visite";
-import {Principal, User, UserService} from "../shared";
-import {JhiAlertService, JhiDataUtils, JhiEventManager} from "ng-jhipster";
-import {Bien, BienService} from "../entities/bien";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
-import {ActivatedRoute} from "@angular/router";
-import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
-import { ClientVisiteService} from "../entities/client-visite";
-import {ClientVisite} from "./AvendreClient-visite.model";
+import {HttpErrorResponse, HttpResponse} from '@angular/common/http';
+import {Client, ClientService} from '../entities/client';
+import {EtatBien, EtatBienService} from '../entities/etat-bien';
+import {TypeBien, TypeBienService} from '../entities/type-bien';
+import {Visite, VisiteService} from '../entities/visite';
+import {Principal, User, UserService} from '../shared';
+import {JhiAlertService, JhiDataUtils, JhiEventManager} from 'ng-jhipster';
+import {Bien, BienService} from '../entities/bien';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {ActivatedRoute} from '@angular/router';
+import {AvendreVisitePopupService} from './avendre-visite-popup.service';
+import { ClientVisiteService} from '../entities/client-visite';
+import {ClientVisite} from './AvendreClient-visite.model';
 
 @Component({
   selector: 'jhi-avendre-visite-dialogue',
@@ -30,7 +30,8 @@ export class AvendreVisiteDialogueComponent implements OnInit {
     visites: Visite[];
     success: boolean;
     clientVisite: ClientVisite;
-
+    clientsVisites: ClientVisite[];
+    visiteDouble: boolean;
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -67,11 +68,11 @@ export class AvendreVisiteDialogueComponent implements OnInit {
         // récupérer  client
         this.principal.identity().then((account) => {
             this.settingsAccount = this.copyAccount(account);
-            console.log(this.settingsAccount)
+            console.log(this.settingsAccount);
             // récupère le user
             this.userService.find(this.settingsAccount.login).subscribe((res: HttpResponse<User>) => {
-                console.log(res.body)
-            //grace au id user on récuère le client
+                console.log(res.body);
+            // grace au id user on récuère le client
             this.clientService.findIdClient(res.body.id).subscribe(
                 (res: HttpResponse<Client>) => {
                     this.client = res.body;
@@ -79,18 +80,32 @@ export class AvendreVisiteDialogueComponent implements OnInit {
                     this.visiteService.find(idVisite).subscribe(
                         (res: HttpResponse<Visite>) => {
                             this.visite = res.body;
-                            console.log(this.visite)
+                            console.log(this.visite);
                             // ajout du client dans Clientvisite, création d'un objet ClientVisite pour ajouter idclient et visite
-                            console.log("création clientVisite" +this.client.id)
-                            console.log("cleintVisite" + this.clientVisite)
-                              this.clientVisite ={idClient:this.client.id,visite:this.visite}
-                            //Création de la ligne dans la table clientVisite
-                            this.clientVisiteService.create(this.clientVisite).subscribe()
-                            // window.location.reload(false);
-                            this.success = true;
+                            console.log('création clientVisite' + this.client.id);
+                            console.log('cleintVisite' + this.clientVisite);
+                              this.clientVisite = {idClient: this.client.id, visite: this.visite};
+                              // rechercher tout les visites client pour controle qu'il n'y ait pas 2x la meme ligne
+                            this.clientVisiteService.query().subscribe((res: HttpResponse<ClientVisite[]>) => {
+                                this.clientsVisites = res.body;
+                                this.visiteDouble = false;
+                                console.log('double' + this.visiteDouble);
+                                console.log(this.clientsVisites);
+                                for ( let l =0; l < this.clientsVisites.length; l++) {
+                                  if ( this.clientsVisites[l].idClient === this.client.id && this.clientsVisites[l].visite.id === this.visite.id ){
+                                      this.visiteDouble = true;
+                                  }
+                                }
+                                console.log('double' + this.visiteDouble);
+                                // Création de la ligne dans la table clientVisite
+                                if ( this.visiteDouble === false ){
+                                    this.clientVisiteService.create(this.clientVisite).subscribe();
+                                    // window.location.reload(false);
+                                    this.success = true ;}
+                            });
                         });
                 });
-            })
+            });
         });
     }
     copyAccount(account) {
@@ -146,7 +161,7 @@ export class avendreVisitePopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            console.log('ngninit dans avendrevisitedialogcomponsent')
+            console.log('ngninit dans avendrevisitedialogcomponsent');
             if ( params['id'] ) {
                 this.avendreVisitePopupService
                     .open(AvendreVisiteDialogueComponent as Component, params['id']);

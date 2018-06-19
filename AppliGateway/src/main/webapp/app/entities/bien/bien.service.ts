@@ -33,7 +33,7 @@ export class BienService {
         return this.http.get<Bien>(`${this.resourceUrl}/${id}`, { observe: 'response'})
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
-    //ajout
+     // ajout
     findBienByType(idTypeBien: number):  Observable<HttpResponse<Bien[]>> {
         const options = createRequestOption(idTypeBien);
         return this.http.get<Bien[]>(`http://localhost:8080/service2bien/api/biens/${idTypeBien}/typeBien`, { params: options, observe: 'response' })

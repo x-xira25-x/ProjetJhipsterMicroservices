@@ -43,7 +43,7 @@
         },
         {
             "fieldName": "numTel",
-            "fieldType": "Integer",
+            "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]

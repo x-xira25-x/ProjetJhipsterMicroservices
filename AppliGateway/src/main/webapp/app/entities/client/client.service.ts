@@ -37,7 +37,6 @@ export class ClientService {
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
 
-
     query(req?: any): Observable<HttpResponse<Client[]>> {
         const options = createRequestOption(req);
         return this.http.get<Client[]>(this.resourceUrl, { params: options, observe: 'response' })

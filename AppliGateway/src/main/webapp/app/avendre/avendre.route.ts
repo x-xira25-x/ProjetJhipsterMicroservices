@@ -1,9 +1,8 @@
 import { Routes } from '@angular/router';
 import {AvendreComponent} from './avendre.component';
 import {UserRouteAccessService} from '../shared';
-import {AvendreVisitePopupService} from "./avendre-visite-popup.service";
-import {avendreVisitePopupComponent} from "./avendre-visite-dialogue.component";
-
+import {AvendreVisitePopupService} from './avendre-visite-popup.service';
+import {avendreVisitePopupComponent} from './avendre-visite-dialogue.component';
 
 export const avendreRoute: Routes = [
     {
@@ -11,7 +10,7 @@ export const avendreRoute: Routes = [
         component: AvendreComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'Avendre'
+            pageTitle: 'appliGatewayApp.Avendre.home.title'
         },
     }
 ];
@@ -21,7 +20,7 @@ export const avendrePopupRoute: Routes = [
 
         component: avendreVisitePopupComponent,
         data: {
-            authorities: ['ROLE_USER','ROLE_ADMIN'],
+            authorities: ['ROLE_USER', 'ROLE_ADMIN'],
             pageTitle: 'BiensVisite'
         },
         canActivate: [UserRouteAccessService],

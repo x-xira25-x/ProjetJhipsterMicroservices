@@ -24,7 +24,12 @@
             "idClient": "Id Client",
             "etatBien": "Etat Bien",
             "typeBien": "Type Bien"
-        }
+        },
+       "Avendre" :
+       {"home":{
+           "title":"for sale"
+            }
+       }
     },
     "service2BienApp": {
         "bien" : {

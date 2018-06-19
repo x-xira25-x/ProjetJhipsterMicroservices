@@ -44,7 +44,7 @@ public class AgentImmobilier implements Serializable {
 
     @NotNull
     @Column(name = "num_tel", nullable = false)
-    private Integer numTel;
+    private String numTel;
 
     @NotNull
     @Column(name = "email", nullable = false)
@@ -128,16 +128,16 @@ public class AgentImmobilier implements Serializable {
         this.localite = localite;
     }
 
-    public Integer getNumTel() {
+    public String getNumTel() {
         return numTel;
     }
 
-    public AgentImmobilier numTel(Integer numTel) {
+    public AgentImmobilier numTel(String numTel) {
         this.numTel = numTel;
         return this;
     }
 
-    public void setNumTel(Integer numTel) {
+    public void setNumTel(String numTel) {
         this.numTel = numTel;
     }
 

@@ -9,7 +9,7 @@ import {JhiAlertService, JhiEventManager} from 'ng-jhipster';
 import { AgentImmobilier } from './agent-immobilier.model';
 import { AgentImmobilierPopupService } from './agent-immobilier-popup.service';
 import { AgentImmobilierService } from './agent-immobilier.service';
-import {User, UserService} from '../../shared';
+import {Principal, User, UserService} from '../../shared';
 import {Register} from '../../account';
 
 @Component({
@@ -37,7 +37,8 @@ export class AgentImmobilierDialogComponent implements OnInit {
         private eventManager: JhiEventManager,
         private userService: UserService,
         private registerService: Register,
-        private jhiAlertService: JhiAlertService
+        private jhiAlertService: JhiAlertService,
+        private principal: Principal,
     ) {
     }
 
@@ -50,6 +51,13 @@ export class AgentImmobilierDialogComponent implements OnInit {
         this.userService.authorities().subscribe((authorities) => {
             this.authorities = authorities;
 
+        });
+        this.principal.identity().then((account) => {
+            // par rapport au login avoir l'id du user
+            console.log(this.copyAccount(account).login);
+            this.userService.find(this.copyAccount(account).login).subscribe(resp => {
+                this.user = resp.body;
+            });
         });
     }
 
@@ -103,6 +111,18 @@ export class AgentImmobilierDialogComponent implements OnInit {
     }
     private onError(error: any) {
         this.jhiAlertService.error(error.message, null, null);
+    }
+
+    copyAccount(account) {
+        return {
+            activated: account.activated,
+            email: account.email,
+            firstName: account.firstName,
+            langKey: account.langKey,
+            lastName: account.lastName,
+            login: account.login,
+            imageUrl: account.imageUrl
+        };
     }
 }
 

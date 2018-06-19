@@ -16,7 +16,8 @@
                 "etatVisite": "Etat Visite",
                 "visite": "Visite",
                 "clientVisite": "Client Visite",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
+                "bienAvendre":"Biens à vendre"
             },
             "account": {
                 "main": "Compte",

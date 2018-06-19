@@ -5,7 +5,6 @@ import { SERVER_API_URL } from '../../app.constants';
 
 import { AgentImmobilier } from './agent-immobilier.model';
 import { createRequestOption } from '../../shared';
-import {Client} from "../client/client.model";
 
 export type EntityResponseType = HttpResponse<AgentImmobilier>;
 
@@ -38,7 +37,6 @@ export class AgentImmobilierService {
         return this.http.get<AgentImmobilier>(`http://localhost:8080/projetjhipstermicroservices/api/agentImmobilierIdUser/${id}`, {observe: 'response' })
             .map((res: EntityResponseType) => this.convertResponse(res));
     }
-
 
     query(req?: any): Observable<HttpResponse<AgentImmobilier[]>> {
         const options = createRequestOption(req);
