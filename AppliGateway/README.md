@@ -4,12 +4,30 @@
 Ce package contient la partie front-end c'est-à-dire interface graphique de l'application. Elle dispose d'un base de données MySql pour la gestion des utilisateurs ainsi que des authorités.
 Il contient aussi un jhispter-registry.
 
+## Configuration
+
+- port: 8080
+- jhipster registry
+- authentification: jwt
+- base de données: MySql pour dev et prod
+- pas de 2nd cache hibernate
+- maven
+- angular 5
+- pas de SASS
+- internationlization
+- Anglais pour le language native et français
+
+
 
 
 
 
 ## Démarrage
-Lancer le docker contenant la base de données MySql ainsi que jhipster-registry
+- Lancer le docker contenant la base de données MySql: 
+``docker-compose -f src/main/docker/mysql.yml up``
+- Lancer jhipster registry dans docker : 
+``docker-compose -f src/main/docker/jhipster-registry.yml up``
+
 
 
 
