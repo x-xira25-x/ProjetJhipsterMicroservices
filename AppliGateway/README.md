@@ -43,7 +43,7 @@ Cette application est configurée pour Service Discovery et Configuration avec J
 ``docker-compose -f src/main/docker/jhipster-registry.yml up``
  http://127.0.0.1:8761/#/: accès à jhispter registry
  - lancer la commande suivant pour lancer le client: 
-     yarn install
+    `` yarn install``
 
 
 
