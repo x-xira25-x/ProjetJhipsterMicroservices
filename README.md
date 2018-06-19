@@ -24,7 +24,7 @@ Le service 3 contient le service pour les visites.
 Chaque package contient un readme explicatif.
 
 ## Contexte
-Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et ainsi, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobilieres.
+Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et ainsi, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobiliers.
 
 ## Utilisateurs de l'application
 L'application dispose de 4 types d'utilisateurs:
