@@ -41,6 +41,7 @@ Données pour la connexion dans phpMyAdmin
 ``docker-compose -f src/main/docker/mysql.yml up``
 - Lancer jhipster registry dans docker : 
 ``docker-compose -f src/main/docker/jhipster-registry.yml up``
+ http://127.0.0.1:8761/#/: accès à jhispter registry
 
 
 
