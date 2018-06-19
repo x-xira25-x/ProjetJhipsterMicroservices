@@ -53,8 +53,8 @@ public class AgentImmobilierResourceIntTest {
     private static final String DEFAULT_LOCALITE = "AAAAAAAAAA";
     private static final String UPDATED_LOCALITE = "BBBBBBBBBB";
 
-    private static final Integer DEFAULT_NUM_TEL = 1;
-    private static final Integer UPDATED_NUM_TEL = 2;
+    private static final String DEFAULT_NUM_TEL = "1";
+    private static final String UPDATED_NUM_TEL = "2";
 
     private static final String DEFAULT_EMAIL = "AAAAAAAAAA";
     private static final String UPDATED_EMAIL = "BBBBBBBBBB";
