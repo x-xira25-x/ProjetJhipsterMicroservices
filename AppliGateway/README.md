@@ -34,7 +34,7 @@ Données pour la connexion dans phpMyAdmin
 - Node.js
 - Yarn
 
-
+Cette application est configurée pour Service Discovery et Configuration avec JHipster-Registry.
 
 ## Démarrage
 - Lancer le docker contenant la base de données MySql: 
@@ -45,12 +45,6 @@ Données pour la connexion dans phpMyAdmin
 
 
 
-
-
-
-
-
-This application is configured for Service Discovery and Configuration with the JHipster-Registry. On launch, it will refuse to start if it is not able to connect to the JHipster-Registry at [http://localhost:8761](http://localhost:8761). For more information, read our documentation on [Service Discovery and Configuration with the JHipster-Registry][].
 
 ## Development
 
