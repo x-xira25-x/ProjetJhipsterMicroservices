@@ -17,7 +17,20 @@ L'application gateway contient l'interface graphique de l'application c'est-à-d
 
 Le service 1 contient le service de l'utilistateur.
 
-Le service 2 contient le service rattaché au bien
+Le service 2 contient le service rattaché au bien.
 
-Le service 3 contient le service pour les visites
+Le service 3 contient le service pour les visites.
+
+Chaque package contient un readme explicatif.
+
+## Contexte
+Cette application est destinée pour les agences immobilières. Elle leur permet de mettre en avant des biens à vendre et ainsi, les clients ont la possibilité de s'inscrire, d'effectuer des recherches et s'inscrire à des visites que proposent les agents immobilieres.
+
+## Utilisateurs de l'application
+L'application dispose de 4 types d'utilisateurs:
+
+- public
+- Client : vendeur ou acheteur
+- Agent immobilier
+- Admnistrateur
 
