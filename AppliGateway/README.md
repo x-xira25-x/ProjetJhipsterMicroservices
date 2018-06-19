@@ -1,4 +1,15 @@
 # AppliGateway
+
+
+
+
+
+## Démarrage
+Lancer le docker contenant la base de données MySql ainsi que jhipster-registry
+
+
+
+
 This application was generated using JHipster 4.14.3, you can find documentation and help at [http://www.jhipster.tech/documentation-archive/v4.14.3](http://www.jhipster.tech/documentation-archive/v4.14.3).
 
 This is a "gateway" application intended to be part of a microservice architecture, please refer to the [Doing microservices with JHipster][] page of the documentation for more information.
