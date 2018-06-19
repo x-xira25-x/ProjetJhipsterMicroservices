@@ -56,7 +56,7 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.client.npa" for="field_npa">Npa</label>
             <input type="text" class="form-control" name="npa" id="field_npa"
-                [(ngModel)]="client.npa" required/>
+                [(ngModel)]="client.npa" required pattern="[0-9]{4}"/>
             <div [hidden]="!(editForm.controls.npa?.dirty && editForm.controls.npa?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.npa?.errors?.required" jhiTranslate="entity.validation.required">
