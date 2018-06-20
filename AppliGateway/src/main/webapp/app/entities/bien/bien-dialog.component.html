@@ -119,12 +119,12 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.bien.idClient" for="field_idClient">Id Client</label>
-           <!-- <input type="number" class="form-control" name="idClient" id="field_idClient"
+           <!-- <input type="number" class="form-control" name="idClient" id="field_idClient"  [(ngModel)]="bien.idClient"
                />-->
-            <select class="form-control" name="clientId" id="field_idClient" [(ngModel)]="client" required >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="clientIdOption === client ? client: clientIdOption" *ngFor="let clientIdOption of clients; trackBy: trackClientById">{{clientIdOption.id}}</option>
-            </select>
+            <select class="form-control" name="clientId" id="field_idClient" [(ngModel)]="bien.idClient" required>
+            <option [ngValue]="null"></option>
+            <option  [ngValue]="clientIdOption.id === bien.idClient ? bien.idClient: clientIdOption.id" *ngFor="let clientIdOption of clients; trackBy: trackClientById" >{{clientIdOption.id}}</option>
+        </select>
             <!--<div [hidden]="!(editForm.controls.idClient?.dirty && editForm.controls.idClient?.invalid)">
                 <small class="form-text text-danger"
                    [hidden]="!editForm.controls.idClient?.errors?.required" jhiTranslate="entity.validation.required">

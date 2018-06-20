@@ -21,10 +21,9 @@ export class BienDialogComponent implements OnInit {
 
     bien: Bien;
     isSaving: boolean;
-client: Client;
+    client: Client;
     etatbiens: EtatBien[];
     clients : Client[];
-
     typebiens: TypeBien[];
     anneeConstructionDp: any;
 
@@ -78,15 +77,12 @@ client: Client;
     save() {
         this.isSaving = true;
         if (this.bien.id !== undefined) {
-            this.bien.idClient = this.client.id;
+            console.log(this.bien);
             this.subscribeToSaveResponse(
                 this.bienService.update(this.bien));
         } else {
-            console.log(this.client.id);
-            this.bien.idClient = this.client.id;
 
             this.subscribeToSaveResponse(
-
                 this.bienService.create(this.bien));
         }
     }
