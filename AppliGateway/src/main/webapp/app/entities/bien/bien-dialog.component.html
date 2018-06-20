@@ -123,7 +123,7 @@
                />-->
             <select class="form-control" name="clientId" id="field_idClient" [(ngModel)]="bien.idClient" required>
             <option [ngValue]="null"></option>
-            <option  [ngValue]="clientIdOption.id === bien.idClient ? bien.idClient: clientIdOption.id" *ngFor="let clientIdOption of clients; trackBy: trackClientById" >{{clientIdOption.id}}</option>
+            <option  [ngValue]="clientIdOption.id === bien.idClient ? bien.idClient: clientIdOption.id" *ngFor="let clientIdOption of clients; trackBy: trackClientById" >{{clientIdOption.id}} : {{clientIdOption.nom}}  {{clientIdOption.prenom}}</option>
         </select>
             <!--<div [hidden]="!(editForm.controls.idClient?.dirty && editForm.controls.idClient?.invalid)">
                 <small class="form-text text-danger"
