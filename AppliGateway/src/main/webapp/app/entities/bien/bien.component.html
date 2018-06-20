@@ -50,12 +50,12 @@
                 <td>{{bien.idClient}}</td>
                 <td>
                     <div *ngIf="bien.etatBien">
-                        <a [routerLink]="['../etat-bien', bien.etatBien?.id ]" >{{bien.etatBien?.nom}}</a>
+                     {{bien.etatBien?.nom}}
                     </div>
                 </td>
                 <td>
                     <div *ngIf="bien.typeBien">
-                        <a [routerLink]="['../type-bien', bien.typeBien?.id ]" >{{bien.typeBien?.nom}}</a>
+                   {{bien.typeBien?.nom}}
                     </div>
                 </td>
                 <td class="text-right">

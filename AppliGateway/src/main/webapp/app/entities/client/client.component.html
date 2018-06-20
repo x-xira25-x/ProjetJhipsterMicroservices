@@ -42,7 +42,7 @@
                 <td>{{client.numTel}}</td>
                 <td>
                     <span *ngFor="let typeClient of client.typeClients; let last = last">
-                            <a class="form-control-static" [routerLink]="['../type-client', typeClient?.id ]">{{typeClient.nom}}</a>{{last ? '' : ', '}}
+                            {{typeClient.nom}} {{last ? '' : ', '}}
                         </span>
                 </td>
                 <td class="text-right">
