@@ -90,7 +90,7 @@
             <div>
                 <img [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 100px;" *ngIf="bien.photo" alt="bien image"/>
                 <div *ngIf="bien.photo" class="form-text text-danger clearfix">
-                    <span class="pull-left">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>
+                    <!--<span class="pull-left">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>-->
                     <button type="button" (click)="clearInputImage('photo', 'photoContentType', 'fileImage')" class="btn btn-secondary btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
