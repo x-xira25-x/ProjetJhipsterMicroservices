@@ -43,7 +43,8 @@
                 <td>{{clientVisite.visite.dateFin | date:'hh:mm a dd/MM/yyyy'}}</td>
                 <td>
                     <div *ngFor="let agent of agentImmos ;trackBy: trackId">
-                        <p  *ngIf="clientVisite.visite.idAgentImmobilier == agent.id">{{agent.nom}} {{agent.prenom}}</p>
+                        <a [routerLink]="['../agent-immobilier', clientVisite.visite.idAgentImmobilier]"><p  *ngIf="clientVisite.visite.idAgentImmobilier == agent.id">
+                           {{agent.nom}} {{agent.prenom}}</p></a>
                     </div>
                 </td>
 
