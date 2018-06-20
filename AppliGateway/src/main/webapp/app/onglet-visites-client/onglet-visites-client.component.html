@@ -30,7 +30,7 @@
             </tr>
             </thead>
             <tbody >
-            <tr *ngFor="let clientVisite of clientVisites ;trackBy: trackId" >
+            <tr *ngFor="let clientVisite of clientVisites ;trackBy: trackId"  >
 
                 <td>
                     <!--<div *ngIf="clientVisite.visite">-->
@@ -41,14 +41,16 @@
                 <!-- <td><a [routerLink]="['../visite', visite.id ]">{{clientVisite.visite}}</a></td>-->
                <td>{{clientVisite.visite.dateDebut | date:'hh:mm a dd/MM/yyyy'}}</td>
                 <td>{{clientVisite.visite.dateFin | date:'hh:mm a dd/MM/yyyy'}}</td>
-                <span *ngFor="let agent of agentImmos ;trackBy: trackId">
                 <td>
-                      <span *ngIf="clientVisite.visite.idAgentImmobilier == agent.id">
-                      <p>   {{agent.nom}} {{agent.prenom}}</p>
-                      </span>
+                    <tr *ngFor="let agent of agentImmos ;trackBy: trackId">
+                         <td *ngIf="clientVisite.visite.idAgentImmobilier == agent.id">
 
+                    {{agent.nom}} {{agent.prenom}}
+
+                    </td>
+                 </tr>
                 </td>
-                </span>
+
                 <td>
                     <a [routerLink]="['../bien', clientVisite.visite.idBien ]" >
                     {{clientVisite.visite.idBien}}
