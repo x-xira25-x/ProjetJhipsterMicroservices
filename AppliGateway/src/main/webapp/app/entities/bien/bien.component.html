@@ -47,7 +47,11 @@
                    <!-- <span *ngIf="bien.photo">{{bien.photoContentType}}, {{byteSize(bien.photo)}}</span>-->
                 </td>
                 <td>{{bien.prix}}</td>
-                <td>{{bien.idClient}}</td>
+                <td  >{{bien.idClient}}
+                    <div *ngFor="let client of clients ;trackBy: trackId">
+                        <p *ngIf="client.id ==bien.idClient">    {{client.prenom}} {{client.nom}}</p>
+
+                    </div> </td>
                 <td>
                     <div *ngIf="bien.etatBien">
                      {{bien.etatBien?.nom}}
