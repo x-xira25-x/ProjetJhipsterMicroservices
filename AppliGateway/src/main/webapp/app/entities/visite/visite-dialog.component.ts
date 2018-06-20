@@ -53,6 +53,7 @@ export class VisiteDialogComponent implements OnInit {
             this.biens = res.body;
             console.log(this.biens);
             }, (res: HttpErrorResponse) => this.onError(res.message) );
+        console.log(this.visite )
     }
 
     clear() {
@@ -62,13 +63,9 @@ export class VisiteDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         if (this.visite.id !== undefined) {
-            this.visite.idAgentImmobilier = this.agentImmobilier.id;
-            this.visite.idBien = this.bien.id;
             this.subscribeToSaveResponse(
                 this.visiteService.update(this.visite));
         } else {
-            this.visite.idAgentImmobilier = this.agentImmobilier.id;
-            this.visite.idBien = this.bien.id;
             this.subscribeToSaveResponse(
                 this.visiteService.create(this.visite));
         }
