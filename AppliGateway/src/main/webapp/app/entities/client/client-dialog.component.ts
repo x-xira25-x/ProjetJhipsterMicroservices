@@ -10,6 +10,7 @@ import { Client } from './client.model';
 import { ClientPopupService } from './client-popup.service';
 import { ClientService } from './client.service';
 import { TypeClient, TypeClientService } from '../type-client';
+import {User, UserService} from "../../shared";
 
 @Component({
     selector: 'jhi-client-dialog',
@@ -19,6 +20,7 @@ export class ClientDialogComponent implements OnInit {
 
     client: Client;
     isSaving: boolean;
+    users: User[];
 
     typeclients: TypeClient[];
 
@@ -27,7 +29,8 @@ export class ClientDialogComponent implements OnInit {
         private jhiAlertService: JhiAlertService,
         private clientService: ClientService,
         private typeClientService: TypeClientService,
-        private eventManager: JhiEventManager
+        private eventManager: JhiEventManager,
+        private userService: UserService,
     ) {
     }
 
@@ -35,6 +38,9 @@ export class ClientDialogComponent implements OnInit {
         this.isSaving = false;
         this.typeClientService.query()
             .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
+        this.userService.query()
+            .subscribe((res: HttpResponse<User[]>) => {
+                this.users = res.body;})
     }
 
     clear() {
