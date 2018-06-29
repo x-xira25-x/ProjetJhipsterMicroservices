@@ -148,15 +148,16 @@ public class UserResource {
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/users");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
-    // ajout
-    @GetMapping("/user/{idUser}")
-    @Timed
-    ResponseEntity<User> findUserById (@PathVariable("idUser")Long idUser){
-        log.debug("REST request to get User}", idUser);
-     User user = userRepository.findUserById(idUser);
-        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
-    }
 
+
+   // ajout
+    @GetMapping("/users/authority/{authority}")
+    @Timed
+    ResponseEntity<User[]>  findAllUserByAuthorities (@PathVariable("authority")String authority){
+        log.debug("REST request to get User}", authority);
+        User[] users = userRepository.findAllUserByAuthorities(authority);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(users));
+    }
 
 
 
@@ -198,5 +199,36 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
+    }
+
+    // ajout
+
+    /**
+     * GET /user/:idUser:
+     * @param idUser
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/user/{idUser}")
+    @Timed
+    ResponseEntity<UserDTO> findUserById (@PathVariable("idUser")Long idUser){
+        log.debug("REST request to get User}", idUser);
+        UserDTO user = userRepository.findUserById(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
+    }
+
+
+    // ajout
+
+    /**
+     * GET /user/createdBy/:login:
+     * @param login
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/user/createdBy/{login}")
+    @Timed
+    List<UserDTO>  findUserCreatedByLogin (@PathVariable("login")String login){
+        log.debug("REST request to get User}", login);
+
+        return  userRepository.findUserCreatedByLogin(login);
     }
 }
