@@ -100,7 +100,7 @@
 
                      <select class="form-control" name="clientId" id="field_idUser" [(ngModel)]="agentImmobilier.idUser" required>
                          <option [ngValue]="null"></option>
-                         <option  [ngValue]="userIdOption.id === agentImmobilier.idUser ? agentImmobilier.idUser: userIdOption.id" *ngFor="let userIdOption of users; trackBy: trackUserById" >{{userIdOption.id}} {{userIdOption.login}} {{userIdOption.authorities}} </option>
+                         <option  [ngValue]="userIdOption.id === agentImmobilier.idUser ? agentImmobilier.idUser: userIdOption.id" *ngFor="let userIdOption of usersDispo; trackBy: trackUserById" >{{userIdOption.id}} {{userIdOption.login}} {{userIdOption.authorities}} </option>
                      </select>
             <!-- <div [hidden]="!(editForm.controls.idUser?.dirty && editForm.controls.idUser?.invalid)">
                all class="form-text text-danger" [hidden]="!editForm.controls.idUser?.errors?.required" jhiTranslate="entity.validation.required">
