@@ -78,14 +78,14 @@
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.client.email" for="field_email">Email</label>
             <input type="text" class="form-control" name="email" id="field_email"
-                [(ngModel)]="client.email" />
+                [(ngModel)]="user.email" />
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.client.idUser" for="field_idUser">Id User</label>
 
             <select class="form-control" name="clientId" id="field_idUser" [(ngModel)]="client.idUser" required>
                 <option [ngValue]="null"></option>
-                <option  [ngValue]="userIdOption.id === client.idUser ? client.idUser: userIdOption.id" *ngFor="let userIdOption of users; trackBy: trackUserById" >{{userIdOption.id}} {{userIdOption.login}} {{userIdOption.authorities}} </option>
+                <option  [ngValue]="userIdOption.id === client.idUser ? client.idUser: userIdOption.id" *ngFor="let userIdOption of usersDispo; trackBy: trackUserById" >{{userIdOption.id}} {{userIdOption.login}} {{userIdOption.authorities}} </option>
             </select>
         </div>
         <div class="form-group">
