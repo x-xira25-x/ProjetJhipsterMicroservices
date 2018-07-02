@@ -22,6 +22,7 @@
             <th><span jhiTranslate="appliGatewayApp.visite.idAgentImmobilier">Agent Immobilier</span></th>
             <th><span jhiTranslate="appliGatewayApp.visite.idBien">Id Bien</span></th>
             <th><span jhiTranslate="appliGatewayApp.visite.etatVisite">Etat Visite</span></th>
+            <th><span jhiTranslate="appliGatewayApp.visite.clients">clients</span></th>
             <th></th>
             </tr>
             </thead>
@@ -36,6 +37,13 @@
                     <div *ngIf="visite.etatVisite">
                       {{visite.etatVisite?.nom}}
                     </div>
+                </td>
+                <td >
+
+                    <div *ngFor="let clientVisite of visite.clientVisites ;trackBy: trackId">
+                        <a [routerLink]="['../client', clientVisite?.idClient ]">{{clientVisite?.idClient}}</a>
+                    </div>
+
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
