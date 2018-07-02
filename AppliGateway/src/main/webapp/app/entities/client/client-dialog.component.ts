@@ -21,8 +21,14 @@ export class ClientDialogComponent implements OnInit {
     client: Client;
     isSaving: boolean;
     users: User[];
-
+    clients: Client[];
     typeclients: TypeClient[];
+    listeIdUserClient: number [];
+    listeIdUser: number[];
+    usersDispo: User[];
+    email : string;
+    user: User;
+
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -36,11 +42,46 @@ export class ClientDialogComponent implements OnInit {
 
     ngOnInit() {
         this.isSaving = false;
+        this.listeIdUserClient = [];
+        this.listeIdUser = [];
+        this.usersDispo= [];
         this.typeClientService.query()
             .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => {
-                this.users = res.body;})
+                this.users = res.body;
+                this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
+                    this.clients = res.body;
+                    // sortir les id
+                    for (let i = 0; i < this.clients.length; i++) {
+                        this.listeIdUserClient.push(this.clients[i].idUser);
+                    }
+                    for(let i = 0; i < this.users.length; i ++){
+                        for(let l =0; l< this.users[i].authorities.length; l ++){
+                                if(this.users[i].authorities[l] == "ROLE_USER"){
+                                    this.listeIdUser.push(this.users[i].id)
+                                }
+                            }
+                        }
+                    //comparaison, resort les id dispo
+                    let missingUser = this.listeIdUser.filter(item => this.listeIdUserClient.indexOf(item) < 0);
+                    let num=0;
+                    //aller recherche les users pour les mettre dans la liste
+                    for (let y =0; y< missingUser.length; y++){
+
+                        this.userService.findUserById(missingUser[y]).subscribe((res: HttpResponse<User>) => {
+                                this.usersDispo[num]= res.body;
+                                num++;
+                            }
+                        )
+                    }
+                });
+              })
+        if(this.client.idUser){
+            this.userService.findUserById(this.client.idUser).subscribe(resp => {
+                this.user = resp.body;
+            });
+        }
     }
 
     clear() {
@@ -49,13 +90,27 @@ export class ClientDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.email = this.user.email;
+        console.log("email" +this.email)
+        this.userService.findUserById(this.client.idUser).subscribe(resp => {
+            this.user = resp.body;
+
+            this.client.email= this.email;
+            this.user.email = this.email;
+            console.log("user" +this.user.email)
+            console.log("client " + this.client.email)
         if (this.client.id !== undefined) {
             this.subscribeToSaveResponse(
-                this.clientService.update(this.client));
+               this.clientService.update(this.client));
+            console.log(this.user.email);
+            this.userService.update(this.user).subscribe( res =>{
+                console.log("update" + this.user.email);
+            });
         } else {
             this.subscribeToSaveResponse(
                 this.clientService.create(this.client));
         }
+        })
     }
 
     private subscribeToSaveResponse(result: Observable<HttpResponse<Client>>) {
