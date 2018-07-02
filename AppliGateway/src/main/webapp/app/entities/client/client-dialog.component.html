@@ -81,9 +81,11 @@
                 [(ngModel)]="user.email" />
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="appliGatewayApp.client.idUser" for="field_idUser">Id User</label>
-
-            <select class="form-control" name="clientId" id="field_idUser" [(ngModel)]="client.idUser" required>
+            <label class="form-control-label" jhiTranslate="appliGatewayApp.client.idUser" for="field_idUser">User</label>
+            <div *ngIf="client.idUser">
+                {{user.login}}
+            </div>
+            <select *ngIf="!client.idUser" class="form-control" name="clientId" id="field_idUser" [(ngModel)]="client.idUser" required>
                 <option [ngValue]="null"></option>
                 <option  [ngValue]="userIdOption.id === client.idUser ? client.idUser: userIdOption.id" *ngFor="let userIdOption of usersDispo; trackBy: trackUserById" >{{userIdOption.id}} {{userIdOption.login}} {{userIdOption.authorities}} </option>
             </select>

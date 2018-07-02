@@ -16,10 +16,10 @@
             "nom": "Nom",
             "prenom": "Prenom",
             "adresse": "Adresse",
-            "npa": "Npa",
+            "npa": "NPA",
             "localite": "Localite",
             "email": "Email",
-            "idUser": "Id User",
+            "idUser": "User",
             "numTel": "Num Tel",
             "typeClient": "Type Client"
         }
