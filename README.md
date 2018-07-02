@@ -1,5 +1,5 @@
-# ProjetJhipsterMicroservices
-Application de gestion de visite immobilière avec l'approche en microservices
+# Idéal Bien SA
+Application de gestion de visite immobilière avec l'approche en microservices crée avec JHipster
 
 ## Introduction
 Cette application en microservices grâce au générateur d'application JHipster a été pour le travail de Bachelor de la He-arc de Neuchâtel,
@@ -63,8 +63,8 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
 <ul>
     <li>Agent immoblier:</li>
     <ul>
-        <li>Login: </li>
-        <li>mot de passe: </li>
+        <li>Login: agent </li>
+        <li>mot de passe: 1234</li>
     </ul>
 </ul>
 <ul>
