@@ -31,13 +31,10 @@ visites: Visite[];
         this.visiteService.query().subscribe(
             (res: HttpResponse<Visite[]>) => {
                 this.visites = res.body;
-                console.log(this.visites)
                 for(let i= 0; i < this.visites.length; i ++){
                     this.clientVisiteService.queryVisiteByIdVisite(this.visites[i].id).subscribe(
                         (res: HttpResponse<ClientVisite[]>) => {
-                            console.log("c " + res.body)
                             this.visites[i].clientVisites= res.body;
-                            console.log(this.visites[i])
                         })
                 }
 
