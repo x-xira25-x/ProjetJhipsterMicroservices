@@ -60,6 +60,7 @@ export class AgentImmobilierDialogComponent implements OnInit {
         this.listeIdUserClient = [];
         this.listeidUserAgent = [];
         this.listeIdUser= [];
+        this.user ={};
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => {
                 this.users = res.body; this.agentImmobilierService.query().subscribe((res: HttpResponse<AgentImmobilier[]>) => {

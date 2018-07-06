@@ -41,10 +41,12 @@ export class ClientDialogComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log("inih")
         this.isSaving = false;
         this.listeIdUserClient = [];
         this.listeIdUser = [];
         this.usersDispo= [];
+        this.user ={};
         this.typeClientService.query()
             .subscribe((res: HttpResponse<TypeClient[]>) => { this.typeclients = res.body; }, (res: HttpErrorResponse) => this.onError(res.message));
         this.userService.query()
@@ -52,6 +54,7 @@ export class ClientDialogComponent implements OnInit {
                 this.users = res.body;
                 this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
                     this.clients = res.body;
+                    console.log("user")
                     // sortir les id
                     for (let i = 0; i < this.clients.length; i++) {
                         this.listeIdUserClient.push(this.clients[i].idUser);
@@ -82,6 +85,7 @@ export class ClientDialogComponent implements OnInit {
                 this.user = resp.body;
             });
         }
+        console.log("email " +this.user.email)
     }
 
     clear() {
