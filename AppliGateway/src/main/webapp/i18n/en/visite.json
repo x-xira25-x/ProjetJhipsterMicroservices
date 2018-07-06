@@ -20,6 +20,11 @@
             "etatVisite": "Etat de la visite",
             "clientVisite": "Client Visite",
             "clients" :"Clients"
+        },
+        "visiteClient":{
+            "home":{
+                "title": "visite"
+            }
         }
     },
     "service3VisiteApp": {
