@@ -56,8 +56,8 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
 <ul>
     <li>Client:</li>
     <ul>
-        <li>Login: </li>
-        <li>mot de passe: </li>
+        <li>Login: client</li>
+        <li>mot de passe: 1234</li>
     </ul>
 </ul>
 <ul>
