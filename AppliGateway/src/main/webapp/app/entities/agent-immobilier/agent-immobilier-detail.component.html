@@ -32,8 +32,8 @@
         <dd>
             <span>{{agentImmobilier.email}}</span>
         </dd>
-        <dt><span jhiTranslate="appliGatewayApp.agentImmobilier.idUser">Id User</span></dt>
-        <dd>
+        <dt *jhiHasAnyAuthority="'ROLE_AGENTIMMMO'"><span jhiTranslate="appliGatewayApp.agentImmobilier.idUser">Id User</span></dt>
+        <dd *jhiHasAnyAuthority="'ROLE_AGENTIMMMO'">
             <span>{{agentImmobilier.idUser}}</span>
         </dd>
     </dl>

@@ -47,6 +47,13 @@ export class ClientVisiteService {
         return this.http.get<ClientVisite[]>(`http://localhost:8080/service3visite/api/client-visites/${id}/client/`, {observe: 'response' })
             .map((res: HttpResponse<ClientVisite[]>) => this.convertArrayResponse(res));
     }
+
+    //ajout
+    queryVisiteByIdVisite(idVisite: number): Observable<HttpResponse<ClientVisite[]>> {
+        return this.http.get<ClientVisite[]>(`http://localhost:8080/service3visite/api/client-visites/${idVisite}/visite/`, {observe: 'response' })
+            .map((res: HttpResponse<ClientVisite[]>) => this.convertArrayResponse(res));
+    }
+
     private convertResponse(res: EntityResponseType): EntityResponseType {
         const body: ClientVisite = this.convertItemFromServer(res.body);
         return res.clone({body});

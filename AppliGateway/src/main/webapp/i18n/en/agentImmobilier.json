@@ -20,7 +20,7 @@
             "localite": "Localite",
             "numTel": "Num Tel",
             "email": "Email",
-            "idUser": "Id User"
+            "idUser": "User"
         }
     },
     "projetJhipsterMicroservicesApp": {

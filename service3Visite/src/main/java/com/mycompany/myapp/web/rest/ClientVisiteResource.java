@@ -108,6 +108,11 @@ public class ClientVisiteResource {
 
     //ajout
 
+    /**
+     * GET
+     * @param idClient
+     * @return
+     */
     @GetMapping("/client-visites/{idClient}/client")
     @Timed
     public List<ClientVisite> findAllClientVisiteByIdClient(@PathVariable("idClient")Long idClient){
@@ -115,6 +120,18 @@ public class ClientVisiteResource {
         return clientVisiteRepository.findAllClientVisiteByIdClient(idClient);
     }
 
+    /**
+     * GET /client-visites/:idVisite/visite
+     *
+     * @param idVisite
+     * @return
+     */
+    @GetMapping("/client-visites/{idVisite}/visite")
+    @Timed
+    public List<ClientVisite> findAllClientVisiteByIdVisite(@PathVariable("idVisite")Long idVisite){
+        log.debug("REST request to get all Client visites of visite");
+        return clientVisiteRepository.findAllClientVisiteByIdVisite(idVisite);
+    }
 
     /**
      * DELETE  /client-visites/:id : delete the "id" clientVisite.

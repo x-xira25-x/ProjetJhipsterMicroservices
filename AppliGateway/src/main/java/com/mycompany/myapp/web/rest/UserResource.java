@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -87,7 +88,7 @@ public class UserResource {
      */
     @PostMapping("/users")
     @Timed
-    @Secured(AuthoritiesConstants.ADMIN)
+    @Secured({AuthoritiesConstants.ADMIN, AuthoritiesConstants.AGENTIMMO})
     public ResponseEntity<User> createUser(@Valid @RequestBody UserDTO userDTO) throws URISyntaxException {
         log.debug("REST request to save User : {}", userDTO);
 
@@ -100,7 +101,7 @@ public class UserResource {
             throw new EmailAlreadyUsedException();
         } else {
             User newUser = userService.createUser(userDTO);
-            mailService.sendCreationEmail(newUser);
+           // mailService.sendCreationEmail(newUser);
             return ResponseEntity.created(new URI("/api/users/" + newUser.getLogin()))
                 .headers(HeaderUtil.createAlert( "userManagement.created", newUser.getLogin()))
                 .body(newUser);
@@ -148,6 +149,18 @@ public class UserResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
+
+   // ajout
+    @GetMapping("/users/authority/{authority}")
+    @Timed
+    ResponseEntity<User[]>  findAllUserByAuthorities (@PathVariable("authority")String authority){
+        log.debug("REST request to get User}", authority);
+        User[] users = userRepository.findAllUserByAuthorities(authority);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(users));
+    }
+
+
+
     /**
      * @return a string list of the all of the roles
      */
@@ -186,5 +199,36 @@ public class UserResource {
         log.debug("REST request to delete User: {}", login);
         userService.deleteUser(login);
         return ResponseEntity.ok().headers(HeaderUtil.createAlert( "userManagement.deleted", login)).build();
+    }
+
+    // ajout
+
+    /**
+     * GET /user/:idUser:
+     * @param idUser
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/user/{idUser}")
+    @Timed
+    ResponseEntity<UserDTO> findUserById (@PathVariable("idUser")Long idUser){
+        log.debug("REST request to get User}", idUser);
+        UserDTO user = userRepository.findUserById(idUser);
+        return ResponseUtil.wrapOrNotFound(Optional.ofNullable(user));
+    }
+
+
+    // ajout
+
+    /**
+     * GET /user/createdBy/:login:
+     * @param login
+     * @return the ResponseEntity with status 200 (OK) and with body the "login" user, or with status 404 (Not Found)
+     */
+    @GetMapping("/user/createdBy/{login}")
+    @Timed
+    List<UserDTO>  findUserCreatedByLogin (@PathVariable("login")String login){
+        log.debug("REST request to get User}", login);
+
+        return  userRepository.findUserCreatedByLogin(login);
     }
 }

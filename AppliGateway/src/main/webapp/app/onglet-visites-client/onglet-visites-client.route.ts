@@ -7,7 +7,7 @@ export const ongletVisitesClientRoute: Routes = [
         component: OngletVisitesClientComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'Visite'
+            pageTitle: 'appliGatewayApp.visiteClient.home.title'
         },
     }
 ];

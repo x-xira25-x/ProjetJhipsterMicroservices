@@ -18,7 +18,13 @@
             "idAgentImmobilier": "Agent Immobilier",
             "idBien": "Id Bien",
             "etatVisite": "Etat de la visite",
-            "clientVisite": "Client Visite"
+            "clientVisite": "Client Visite",
+            "clients" :"Clients"
+        },
+        "visiteClient":{
+            "home":{
+                "title": "visite"
+            }
         }
     },
     "service3VisiteApp": {

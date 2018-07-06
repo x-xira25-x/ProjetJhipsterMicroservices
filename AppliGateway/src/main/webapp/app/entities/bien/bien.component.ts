@@ -6,22 +6,25 @@ import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 import { Bien } from './bien.model';
 import { BienService } from './bien.service';
 import { Principal } from '../../shared';
+import {Client, ClientService} from "../client";
 
 @Component({
     selector: 'jhi-bien',
     templateUrl: './bien.component.html'
 })
 export class BienComponent implements OnInit, OnDestroy {
-biens: Bien[];
+    biens: Bien[];
     currentAccount: any;
     eventSubscriber: Subscription;
+    clients: Client[];
 
     constructor(
         private bienService: BienService,
         private jhiAlertService: JhiAlertService,
         private dataUtils: JhiDataUtils,
         private eventManager: JhiEventManager,
-        private principal: Principal
+        private principal: Principal,
+        private clientService: ClientService,
     ) {
     }
 
@@ -32,6 +35,10 @@ biens: Bien[];
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+        this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
+            this.clients = res.body;
+            console.log(this.clients);
+        }, (res: HttpErrorResponse) => this.onError(res.message));
     }
     ngOnInit() {
         this.loadAll();

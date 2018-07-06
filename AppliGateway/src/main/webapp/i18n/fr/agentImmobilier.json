@@ -14,13 +14,13 @@
                 "title": "Agent Immobilier"
             },
             "nom": "Nom",
-            "prenom": "Prenom",
+            "prenom": "Prénom",
             "adresse": "Adresse",
-            "npa": "Npa",
-            "localite": "Localite",
-            "numTel": "Num Tel",
+            "npa": "NPA",
+            "localite": "Localité",
+            "numTel": "Numéro de téléphone",
             "email": "Email",
-            "idUser": "Id User"
+            "idUser": "User"
         }
     },
     "projetJhipsterMicroservicesApp": {

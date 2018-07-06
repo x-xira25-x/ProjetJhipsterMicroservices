@@ -12,6 +12,8 @@ import { VisiteService } from './visite.service';
 import { EtatVisite, EtatVisiteService } from '../etat-visite';
 import {AgentImmobilier, AgentImmobilierService} from '../agent-immobilier';
 import {Bien, BienService} from '../bien';
+import {ClientVisite, ClientVisiteService} from "../client-visite";
+import {Client, ClientService} from "../client";
 
 @Component({
     selector: 'jhi-visite-dialog',
@@ -26,6 +28,12 @@ export class VisiteDialogComponent implements OnInit {
     etatvisites: EtatVisite[];
     biens: Bien[];
     bien: Bien;
+    clients: Client[];
+    clientVisite: ClientVisite
+    clientVisites : ClientVisite[];
+    clientsVisitesBefore: ClientVisite[];
+    listeIdClient:number [];
+    listeNewIdClient: number[];
 
     constructor(
         public activeModal: NgbActiveModal,
@@ -35,10 +43,13 @@ export class VisiteDialogComponent implements OnInit {
         private eventManager: JhiEventManager,
         private agentImmoService: AgentImmobilierService,
         private bienService: BienService,
+        private clientService : ClientService,
+        private clientVisiteService: ClientVisiteService,
     ) {
     }
 
     ngOnInit() {
+
         this.isSaving = false;
         this.etatVisiteService.query()
             .subscribe((res: HttpResponse<EtatVisite[]>) => {
@@ -46,13 +57,26 @@ export class VisiteDialogComponent implements OnInit {
                 }, (res: HttpErrorResponse) => this.onError(res.message));
         this.agentImmoService.query().subscribe((res: HttpResponse<AgentImmobilier[]>) => {
             this.agentsImmo = res.body;
-            console.log(this.agentsImmo);
+            console.log("agent " + this.agentsImmo);
             }, (res: HttpErrorResponse) => this.onError(res.message) );
 
         this.bienService.query().subscribe((res: HttpResponse<Bien[]>) => {
             this.biens = res.body;
-            console.log(this.biens);
+            console.log("bien" +this.biens);
             }, (res: HttpErrorResponse) => this.onError(res.message) );
+
+        this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
+            this.clients = res.body;
+            console.log("cleint" +this.clients);
+        }, (res: HttpErrorResponse) => this.onError(res.message) );
+
+        // récupérer les clients de la visite
+        this.clientVisiteService.queryVisiteByIdVisite(this.visite.id).subscribe((res:HttpResponse<ClientVisite[]>) => {
+            this.clientVisites = res.body;
+            console.log(this.clientVisites);
+        })
+
+        console.log(this.visite.etatVisite )
     }
 
     clear() {
@@ -61,16 +85,49 @@ export class VisiteDialogComponent implements OnInit {
 
     save() {
         this.isSaving = true;
+        this.listeIdClient=  [];
+        this.listeNewIdClient= [];
+        console.log(this.clientVisites)
         if (this.visite.id !== undefined) {
-            this.visite.idAgentImmobilier = this.agentImmobilier.id;
-            this.visite.idBien = this.bien.id;
             this.subscribeToSaveResponse(
                 this.visiteService.update(this.visite));
+            // aller chercher la liste par rapport à id visite et comparer
+            this.clientVisiteService.queryVisiteByIdVisite(this.visite.id).subscribe((res:HttpResponse<ClientVisite[]>) => {
+                this.clientsVisitesBefore = res.body;
+                console.log(this.clientsVisitesBefore);
+                // sortir les id et les mettre dans une liste
+                for(let i=0;i<this.clientsVisitesBefore.length; i++){
+                    this.listeIdClient.push(this.clientsVisitesBefore[i].idClient);
+                }
+                console.log("liste des clients pour la liste avant modif"+ this.listeIdClient)
+                console.log(this.clientVisites[0].id)
+                for(let i=0;i<this.clientVisites.length; i++){
+                    console.log("boucle"+ this.clientVisites[i] )
+                    this.listeNewIdClient.push(this.clientVisites[i].id);
+                }
+                console.log("liste new"+ this.listeNewIdClient);
+
+                let missingClient = this.listeIdClient.filter(item => this.listeNewIdClient.indexOf(item)<0);
+                console.log(missingClient)
+
+         /*       let num=0;
+        for(let i =0; i <this.clientsVisitesBefore.length; i++ ){
+            if(this.clientsVisitesBefore[i].idClient !=this.clientVisites[num].idClient){
+                console.log("num"+ num)
+                console.log("ajout")
+                console.log(this.clientsVisitesBefore[i].idClient)
+                console.log(this.clientVisites[num].idClient)
+            }
+            num ++;
+            console.log("continue")
+        }*/
+
+            })
+            //this.clientVisiteService.update(this.clientVisite);
         } else {
-            this.visite.idAgentImmobilier = this.agentImmobilier.id;
-            this.visite.idBien = this.bien.id;
             this.subscribeToSaveResponse(
                 this.visiteService.create(this.visite));
+            this.clientVisiteService.create(this.clientVisite);
         }
     }
 
@@ -97,12 +154,26 @@ export class VisiteDialogComponent implements OnInit {
         return item.id;
     }
 
+    trackClientById(index: number, item: Client) {
+        return item.id;
+    }
+
     trackAgentImmoById(index: number, item: AgentImmobilier) {
         return item.id;
     }
 
     trackBienById(index: number, item: Bien) {
         return item.id;
+    }
+    getSelected(selectedVals: Array<any>, option: any) {
+        if (selectedVals) {
+            for (let i = 0; i < selectedVals.length; i++) {
+                if (option.id === selectedVals[i].id) {
+                    return selectedVals[i];
+                }
+            }
+        }
+        return option;
     }
 }
 

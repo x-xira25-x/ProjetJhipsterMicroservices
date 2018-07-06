@@ -40,7 +40,7 @@
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idAgentImmobilier" for="field_idAgentImmobilier">Agent Immobilier</label>
             <select class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier" [(ngModel)]="visite.idAgentImmobilier" required >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="agentIdOption === agentImmobilier ? agentImmobilier: agentIdOption" *ngFor="let agentIdOption of agentsImmo; trackBy: trackAgentImmoById" >{{agentIdOption.id}}</option>
+                <option [ngValue]="agentIdOption.id === visite.idAgentImmobilier ? visite.idAgentImmobilier: agentIdOption.id" *ngFor="let agentIdOption of agentsImmo; trackBy: trackAgentImmoById" >{{agentIdOption.id}}</option>
             </select>
            <!-- <input type="number" class="form-control" name="idAgentImmobilier" id="field_idAgentImmobilier"
                 [(ngModel)]="visite.idAgentImmobilier" required/>
@@ -57,11 +57,10 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.idBien" for="field_idBien">Id Bien</label>
-            <select class="form-control" name="idAgentImmobilier" id="field_idBien" [(ngModel)]="visite.idBien" required >
+            <select class="form-control" name="idBien" id="field_idBien" [(ngModel)]="visite.idBien" required >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="bienIdOption === bien ? bien: bienIdOption" *ngFor="let bienIdOption of biens; trackBy: trackBienById">{{bienIdOption.id}}</option>
+                <option [ngValue]="bienIdOption.id === visite.idBien ? visite.idBien: bienIdOption.id" *ngFor="let bienIdOption of biens; trackBy: trackBienById">{{bienIdOption.id}}</option>
             </select>
-
             <!--<input type="number" class="form-control" name="idBien" id="field_idBien"
                 [(ngModel)]="visite.idBien" required/>
             <div [hidden]="!(editForm.controls.idBien?.dirty && editForm.controls.idBien?.invalid)">
@@ -77,19 +76,33 @@
         </div>
 
         <div class="form-group">
+
             <label class="form-control-label" jhiTranslate="appliGatewayApp.visite.etatVisite" for="field_etatVisite">Etat Visite</label>
             <select class="form-control" id="field_etatVisite" name="etatVisite" [(ngModel)]="visite.etatVisite"  required>
-                <option *ngIf="!editForm.value.etatVisite" [ngValue]="null" selected></option>
                 <option [ngValue]="etatVisiteOption.id === visite.etatVisite?.id ? visite.etatVisite : etatVisiteOption" *ngFor="let etatVisiteOption of etatvisites; trackBy: trackEtatVisiteById">{{etatVisiteOption.nom}}</option>
             </select>
         </div>
-        <div [hidden]="!(editForm.controls.etatVisite?.dirty && editForm.controls.etatVisite?.invalid)">
+        <!--<div [hidden]="!(editForm.controls.etatVisite?.dirty && editForm.controls.etatVisite?.invalid)">
             <small class="form-text text-danger"
                 [hidden]="!editForm.controls.etatVisite?.errors?.required" jhiTranslate="entity.validation.required">
                 This field is required.
             </small>
-        </div>
+        </div>-->
+        <!--LISTE DES CLIENTS -->
+
+
+        <!--<div class="form-group">
+            <label jhiTranslate="appliGatewayApp.visite.clients" for="field_etatVisite">Clients</label>
+            <select class="form-control" id="field_clients" multiple name="etatVisite" [(ngModel)]="visite.clientVisites"  required>
+                <option [ngValue]="getSelected(visite.clientVisites, ClientOption)" *ngFor="let ClientOption of clients; trackBy: trackTypeClientById">{{ClientOption.id}}</option>
+
+            </select>
+        </div>-->
     </div>
+
+
+
+
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

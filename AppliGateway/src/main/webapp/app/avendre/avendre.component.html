@@ -7,7 +7,7 @@
           Pour obtenir plus de détails, veuillez cliquer sur le numéro ID
        </div>
    -->
-    <!--filtre qui ne fonctionne pas, ne retourne pas la valeur choisi-->
+    <!--filtre qui retourne par rapport au type du bien-->
     <div class="col-2" >
         <form>
             <h3>Filtre</h3>
@@ -93,17 +93,18 @@
 
     <div class="row"*ngIf="biens">
         <div class="col-sm-3"*ngFor="let bien of biens ;trackBy: trackId">
-            <div  >
-                <div  class="card" style="width: 18rem;">
+            <div>
+                <div class="card" style="width: 18rem;">
                     <a *ngIf="bien.photo" >
                         <img  class="card-img-top" [src]="'data:' + bien.photoContentType + ';base64,' + bien.photo" style="max-height: 170px;"alt="Card image cap"/>
                     </a>
 
                     <div class="card-body">
-                        <h5 class="card-title"> {{bien.prix| number : fractionSize}} CHF</h5>
+                        <h5 class="card-title" >
+                            {{bien.prix| number : fractionSize}} CHF</h5>
                         <p>Référence : {{bien.id}}</p>
                         <h6>{{bien.typeBien?.nom}}</h6>
-                        <p class="card-text">{{bien.description}}</p>
+                        <p class="card-text" style="height: 30px; white-space: nowrap;overflow: hidden; text-overflow: ellipsis;">{{bien.description}}</p>
                         <a [routerLink]="['../bien', bien.id ]"class="btn btn-primary">Détail</a>
 
                         <a *jhiHasAnyAuthority="'ROLE_USER'"

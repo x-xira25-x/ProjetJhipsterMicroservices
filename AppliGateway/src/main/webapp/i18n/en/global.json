@@ -1,6 +1,6 @@
 {
     "global": {
-        "title": "AppliGateway",
+        "title": "Idéal Biens SA",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
             "home": "Home",
@@ -17,7 +17,8 @@
                 "visite": "Visite",
                 "clientVisite": "Client Visite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-                "bienAvendre":"Properties for sale"
+                "bienAvendre":"Properties for sale",
+                "visiteClient" : "Visits"
             },
             "account": {
                 "main": "Account",

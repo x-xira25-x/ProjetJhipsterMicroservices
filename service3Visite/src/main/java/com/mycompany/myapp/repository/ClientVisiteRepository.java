@@ -19,4 +19,7 @@ public interface ClientVisiteRepository extends JpaRepository<ClientVisite, Long
     @Query("select clientVisite from ClientVisite  clientVisite where clientVisite.idClient =:idClient")
     List<ClientVisite> findAllClientVisiteByIdClient(@Param("idClient")Long idClient);
 
+    @Query ("select clientVisite from ClientVisite  clientVisite where clientVisite.visite.id =:idVisite")
+    List<ClientVisite> findAllClientVisiteByIdVisite(@Param("idVisite")Long idVisite);
+
 }

@@ -24,6 +24,7 @@ export class UserService {
         return this.http.get<User>(`${this.resourceUrl}/${login}`, { observe: 'response' });
     }
 
+
     query(req?: any): Observable<HttpResponse<User[]>> {
         const options = createRequestOption(req);
         return this.http.get<User[]>(this.resourceUrl, { params: options, observe: 'response' });
@@ -35,6 +36,14 @@ export class UserService {
 
     authorities(): Observable<string[]> {
         return this.http.get<string[]>(SERVER_API_URL + 'api/users/authorities');
+    }
+
+    findUserById(idUser: number): Observable<HttpResponse<User>> {
+        return this.http.get<User>(SERVER_API_URL + `api/user/${idUser}`, { observe: 'response' });
+    }
+
+    findUserCreatedByLogin(login: string): Observable<HttpResponse<User[]>> {
+        return this.http.get<User[]>(SERVER_API_URL + `api/user/createdBy/${login}`, { observe: 'response' });
     }
 
 }
