@@ -1,10 +1,8 @@
 # Idéal Bien SA
-Application de gestion de visite immobilière avec l'approche en microservices crée avec JHipster
+Idéal Biens SA est une application de gestion de visite immobilière avec l'approche en microservices crée avec JHipster
 
 ## Introduction
-Cette application en microservices grâce au générateur d'application JHipster a été pour le travail de Bachelor de la He-arc de Neuchâtel,
-filière informatique de gestion. Le but de cette application est de pouvoir tester l'archtitecture en microservices que propose JHipster et 
-ainsi de developper une application.
+Cette application en microservices a été développée grâce au générateur d'application JHipster pour le travail de Bachelor de la He-arc de Neuchâtel, filière informatique de gestion. Le but de cette application est de pouvoir tester l'architecture en microservices que propose JHipster et ainsi de développer une application.
 
 ## Structure
 Ce projet contient différents projets.
@@ -15,11 +13,13 @@ Ce projet contient différents projets.
 
 L'application gateway contient l'interface graphique de l'application c'est-à-dire le front-end.
 
-Le service 1 contient le service de l'utilistateur.
+Le service 1 contient le service de l'utilisateur.
 
 Le service 2 contient le service rattaché au bien.
 
 Le service 3 contient le service pour les visites.
+
+Ci-dessous se trouve la structure du projet :
 
 Chaque package contient un readme explicatif.
 ![](https://github.com/x-xira25-x/ProjetJhipsterMicroservices/blob/master/structure.PNG)
@@ -61,7 +61,7 @@ L'agent immobilier est créé depuis le compte administrateur. Il peut accéder 
 - agent immobilier
 - visite
 
-#### Admnistrateur
+#### Administrateur
 L'administrateur dispose d'un onglet "administration" qui lui permet de controler divers paramètre de l'application.
 
 ### Compte
@@ -74,7 +74,7 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
     </ul>
 </ul>
 <ul>
-    <li>Agent immoblier:</li>
+    <li>Agent immobilier:</li>
     <ul>
         <li>Login: agent </li>
         <li>mot de passe: 1234</li>
