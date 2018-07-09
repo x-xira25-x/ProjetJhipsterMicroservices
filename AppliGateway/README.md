@@ -1,21 +1,21 @@
 # AppliGateway
 
 ## Introduction
-Ce package contient la partie front-end c'est-à-dire interface graphique de l'application. Elle dispose d'une base de données MySql pour la gestion des utilisateurs ainsi que des authorités.
+Ce package contient la partie front-end c'est-à-dire interface graphique de l'application. Elle dispose d'une base de données MySql pour la gestion des utilisateurs ainsi que des autorités.
 Il contient aussi un jhispter-registry.
 
 ## Configuration
 
 - Jhipster: 4.14.3
-- port: 8080
-- jhipster registry
-- authentification: jwt
-- base de données: MySql pour dev et prod
-- pas de 2nd cache hibernate
-- maven
-- angular 5
-- pas de SASS
-- internationlization
+- Port: 8080
+- JHipster-Registry
+- Authentification: jwt
+- Base de données: MySql pour dev et prod
+- Pas de 2nd cache hibernate
+- Maven
+- Angular 5
+- Pas de SASS
+- Internationlization
 - Anglais pour le language native et français
 
 Afin d'avoir une meilleure interface pour les base de données, j'ai installé phpMyAdmin dans un conteneur Docker qui doit se trouver dans le même réseau que les autres conteneurs Dockers afin de pouvoir les faire communiquer.
