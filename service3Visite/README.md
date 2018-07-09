@@ -1,5 +1,5 @@
 # service3Visite
-Ce package contient le microservices pour les utilisateurs.
+Ce package contient le microservices pour les visites.
 
 ## Structure
 
