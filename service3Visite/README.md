@@ -32,4 +32,4 @@ Ajouter un mot de passe :
 
 ``ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';``
 
-Stopper et détruire le container pour qu'il prenne en charge le mot de passe
+Stopper et détruire le conteneur pour qu'il prenne en charge le mot de passe
