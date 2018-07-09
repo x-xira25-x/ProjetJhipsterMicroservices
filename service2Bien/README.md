@@ -5,7 +5,7 @@ Ce package contient le microservices pour les biens.
 
 La structure de ce package est la suivante :
 
-![](https://github.com/x-xira25-x/ProjetJhipsterMicroservices/blob/master/service1/structure_service2.PNG)
+![](https://github.com/x-xira25-x/ProjetJhipsterMicroservices/blob/master/service2Bien/structure_service2.PNG)
 
 ## Manuel d'utilisation
 
