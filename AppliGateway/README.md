@@ -42,7 +42,7 @@ Cette application est configurée pour Service Discovery et Configuration avec J
 - Lancer jhipster registry dans docker : 
 ``docker-compose -f src/main/docker/jhipster-registry.yml up``
  http://127.0.0.1:8761/#/: accès à jhispter registry
- - lancer la commande suivant pour lancer le client: 
+ - Lancer la commande suivant pour lancer le client: 
     `` yarn start``
 
 #### Premier démarrage
