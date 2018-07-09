@@ -15,3 +15,7 @@ Lancer le conteneur Docker:
     
 Je lance mes conteneurs Docker grâce à Kitematic.
 
+## Base de données
+
+mot de passe 1234
+user: root
