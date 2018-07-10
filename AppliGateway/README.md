@@ -1,4 +1,4 @@
-# AppliGateway
+# Gateway
 
 ## Introduction
 Ce package contient la partie front-end c'est-à-dire interface graphique de l'application. Elle dispose d'une base de données MySql pour la gestion des utilisateurs ainsi que des autorités.
