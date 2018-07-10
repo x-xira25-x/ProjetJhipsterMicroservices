@@ -53,7 +53,7 @@ L'application dispose de 4 types d'utilisateurs:
 - Public
 - Client : vendeur ou acheteur
 - Agent immobilier
-- Admnistrateur
+- Administrateur
 
 #### Public
 L'utilisateur en public peut accéder à l'onglet "a vendre" et ainsi voir les biens mis en vente. Il peut également effectuer un filtre par type de bien.
