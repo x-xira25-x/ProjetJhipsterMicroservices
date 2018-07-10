@@ -1,5 +1,6 @@
 # service2Bien
-Ce package contient le microservices pour les biens.
+Ce package contient le microservices pour les biens. Il ne contient pas de front-end, c'est-à-dire de partie interface utilisateur.
+
 
 ## Structure
 
