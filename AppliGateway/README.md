@@ -27,7 +27,9 @@ Je lance tous mes conteneur Docker grâce à Kitematic.
 Données pour la connexion dans phpMyAdmin
 
 - mysqlgateway: 172.18.0.4 mot de passe: 1234
-- mysql microservice (service 1) : 172.18.0.1 Mot de passe : 1234
+- mysql appligateway : 172.18.0.1 Mot de passe : 1234
+
+La base de données contient les tables créées par JHipster : User, Role.
 
 
 ## Prérequis
