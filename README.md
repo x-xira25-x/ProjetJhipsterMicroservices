@@ -89,7 +89,7 @@ L'administrateur dispose d'un onglet "administration" qui lui permet de controle
     </ul>
 </ul>
 <ul>
-    <li>Administarteur::</li>
+    <li>Administrateur:</li>
     <ul>
         <li>Login: admin</li>
         <li>mot de passe: admin</li>
