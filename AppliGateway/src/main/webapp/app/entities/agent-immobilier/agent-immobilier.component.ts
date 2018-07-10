@@ -12,7 +12,7 @@ import { Principal } from '../../shared';
     templateUrl: './agent-immobilier.component.html'
 })
 export class AgentImmobilierComponent implements OnInit, OnDestroy {
-agentImmobiliers: AgentImmobilier[];
+    agentImmobiliers: AgentImmobilier[];
     currentAccount: any;
     eventSubscriber: Subscription;
 

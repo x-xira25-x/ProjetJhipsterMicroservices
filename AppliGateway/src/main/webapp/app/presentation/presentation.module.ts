@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {AppliGatewaySharedModule} from "../shared";
-import {RouterModule} from "@angular/router";
-import {PresentationComponent} from "./presentation.component";
-import {presentationRoute} from "./presentation.route";
+import {AppliGatewaySharedModule} from '../shared';
+import {RouterModule} from '@angular/router';
+import {PresentationComponent} from './presentation.component';
+import {presentationRoute} from './presentation.route';
 
 const ENTITY_STATES = [
     ...presentationRoute,
-]
+];
 
 @NgModule({
   imports: [

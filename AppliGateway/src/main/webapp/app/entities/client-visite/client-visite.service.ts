@@ -42,13 +42,13 @@ export class ClientVisiteService {
         return this.http.delete<any>(`${this.resourceUrl}/${id}`, { observe: 'response'});
     }
 
-    //ajout
+    // ajout
     queryVisiteByIdClient(id: number): Observable<HttpResponse<ClientVisite[]>> {
         return this.http.get<ClientVisite[]>(`http://localhost:8080/service3visite/api/client-visites/${id}/client/`, {observe: 'response' })
             .map((res: HttpResponse<ClientVisite[]>) => this.convertArrayResponse(res));
     }
 
-    //ajout
+    // ajout
     queryVisiteByIdVisite(idVisite: number): Observable<HttpResponse<ClientVisite[]>> {
         return this.http.get<ClientVisite[]>(`http://localhost:8080/service3visite/api/client-visites/${idVisite}/visite/`, {observe: 'response' })
             .map((res: HttpResponse<ClientVisite[]>) => this.convertArrayResponse(res));

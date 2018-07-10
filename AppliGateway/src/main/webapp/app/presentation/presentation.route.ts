@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import {PresentationComponent} from "./presentation.component";
+import {PresentationComponent} from './presentation.component';
 
 
 export const presentationRoute: Routes = [
@@ -8,7 +8,7 @@ export const presentationRoute: Routes = [
         component: PresentationComponent,
         data: {
             // authorities: ['ROLE_USER'],
-            pageTitle: 'appliGatewayApp.visiteClient.home.title'
+            pageTitle: 'global.menu.entities.presentation'
         },
     }
 ];

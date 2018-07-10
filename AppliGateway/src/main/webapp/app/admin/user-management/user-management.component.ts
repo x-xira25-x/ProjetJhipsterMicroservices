@@ -24,7 +24,7 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     predicate: any;
     previousPage: any;
     reverse: any;
-    agentImmo:Boolean;
+    agentImmo: Boolean;
 
     constructor(
         private userService: UserService,
@@ -45,11 +45,11 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.agentImmo= false;
+        this.agentImmo = false;
         this.principal.identity().then((account) => {
             this.currentAccount = account;
-            if(this.currentAccount.valueOf().authorities == 'ROLE_AGENTIMMO'){
-                this.agentImmo= true;
+            if (this.currentAccount.valueOf().authorities === 'ROLE_AGENTIMMO') {
+                this.agentImmo = true;
             }
             this.loadAll();
             this.registerChangeInUsers();
@@ -81,10 +81,10 @@ export class UserMgmtComponent implements OnInit, OnDestroy {
     }
 
     loadAll() {
-        if(this.agentImmo == true){
+        if (this.agentImmo === true) {
             this.userService.findUserCreatedByLogin(this.currentAccount.valueOf().login).subscribe(
                 (res: HttpResponse<User[]>) =>
-                    this.users= res.body,
+                    this.users = res.body,
                 (res: HttpResponse<any>) => this.onError(res.body) );
 
         }else {

@@ -18,7 +18,8 @@
                 "clientVisite": "Client Visite",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
                 "bienAvendre":"Biens à vendre",
-                "visiteClient" : "Visites"
+                "visiteClient" : "Visites",
+                "presentation" : "Presentation"
             },
             "account": {
                 "main": "Compte",

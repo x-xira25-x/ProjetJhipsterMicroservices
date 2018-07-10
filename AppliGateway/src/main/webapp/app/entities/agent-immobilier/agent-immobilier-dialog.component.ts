@@ -11,7 +11,7 @@ import { AgentImmobilierPopupService } from './agent-immobilier-popup.service';
 import { AgentImmobilierService } from './agent-immobilier.service';
 import {Principal, User, UserService} from '../../shared';
 import {Register} from '../../account';
-import {Client, ClientService} from "../client";
+import {Client, ClientService} from '../client';
 
 @Component({
     selector: 'jhi-agent-immobilier-dialog',
@@ -55,70 +55,67 @@ export class AgentImmobilierDialogComponent implements OnInit {
         this.isSaving = false;
         this.authorities = [];
         this.registerAccount = {};
-        this.usersDispo= [];
+        this.usersDispo = [];
         this.authorities = [];
         this.listeIdUserClient = [];
         this.listeidUserAgent = [];
-        this.listeIdUser= [];
-        this.user ={};
+        this.listeIdUser = [];
+        this.user = {};
         this.userService.query()
             .subscribe((res: HttpResponse<User[]>) => {
                 this.users = res.body; this.agentImmobilierService.query().subscribe((res: HttpResponse<AgentImmobilier[]>) => {
                     this.agents = res.body;
                     this.clientService.query().subscribe((res: HttpResponse<Client[]>) => {
                         this.clients = res.body;
-                        console.log(this.clients)
+                        console.log(this.clients);
                         console.log(this.users);
-                        //sortir les id
-                        for(let i=0;i<this.clients.length; i++){
+                        // sortir les id
+                        for (let i = 0; i < this.clients.length; i++) {
                             this.listeIdUserClient.push(this.clients[i].idUser);
                         }
-                        console.log("liste id User pour client: " + this.listeIdUserClient);
-
-                        for(let i=0;i<this.agents.length; i++){
+                        console.log('liste id User pour client: ' + this.listeIdUserClient);
+                        for (let i = 0 ; i < this.agents.length; i++) {
                             this.listeidUserAgent.push(this.agents[i].idUser);
                         }
-                        console.log("liste id user agent " + this.listeidUserAgent);
-                        for(let i=0;i<this.users.length; i++){
+                        console.log('liste id user agent ' + this.listeidUserAgent);
+                        for (let i = 0 ; i < this.users.length; i++) {
                             this.listeIdUser.push(this.users[i].id);
-
                         }
-                        console.log("liste id user " + this.listeIdUser);
+                        console.log('liste id user ' + this.listeIdUser);
                         // comparer les listes
 
                         let missingClient = this.listeIdUser.filter(item => this.listeIdUserClient.indexOf(item) < 0);
                         console.log(missingClient);
                         let missingAgent = this.listeIdUser.filter(item => this.listeidUserAgent.indexOf(item) < 0);
-                        console.log(missingAgent)
-                        let missingUser = missingClient.filter(item => missingAgent.indexOf(item)>0);
-                        console.log(missingUser)
-                        let num=0;
-                        //aller recherche les users pour les mettre dans la liste
-                        for (let y =0; y< missingUser.length; y++){
+                        console.log(missingAgent);
+                        let missingUser = missingClient.filter(item => missingAgent.indexOf(item) > 0);
+                        console.log(missingUser);
+                        let num = 0 ;
+                        // aller recherche les users pour les mettre dans la liste
+                        for (let y = 0; y < missingUser.length; y++) {
 
                             this.userService.findUserById(missingUser[y]).subscribe((res: HttpResponse<User>) => {
-                                    console.log(num)
-                                    this.usersDispo[num]= res.body;
-                                    console.log(this.usersDispo[y].authorities)
+                                    console.log(num);
+                                    this.usersDispo[num] = res.body;
+                                    console.log(this.usersDispo[y].authorities);
                                     num++;
                                 }
-                            )
-                            console.log(num)
-
+                            );
+                            console.log(num);
                         }
                         console.log( this.usersDispo);
-                        console.log(this.users)
+                        console.log(this.users);
                     });
-                }); }, (res: HttpErrorResponse) => this.onError(res.message));
-        this.userService.authorities().subscribe((authorities) => {
+                });
+                }, (res: HttpErrorResponse) => this.onError(res.message));
+                this.userService.authorities().subscribe((authorities) => {
             this.authorities = authorities;
         });
-        if(this.agentImmobilier.idUser){
+        if (this.agentImmobilier.idUser) {
             this.userService.findUserById(this.agentImmobilier.idUser).subscribe(resp => {
                 this.user = resp.body;
             });
         }
-
     }
 
     clear() {
@@ -128,23 +125,20 @@ export class AgentImmobilierDialogComponent implements OnInit {
     save() {
         this.isSaving = true;
         this.email = this.user.email;
-        console.log("email" +this.email)
+        console.log('email' +this.email);
         this.userService.findUserById(this.agentImmobilier.idUser).subscribe(resp => {
             this.user = resp.body;
-
-            this.agentImmobilier.email= this.email;
+            this.agentImmobilier.email = this.email;
             this.user.email = this.email;
-            console.log("user" +this.user.email)
-            console.log("agent " + this.agentImmobilier.email)
+            console.log('user' + this.user.email);
+            console.log('agent ' + this.agentImmobilier.email);
             if (this.agentImmobilier.id !== undefined) {
-                console.log(this.agentImmobilier)
-
+                console.log(this.agentImmobilier);
                 this.subscribeToSaveResponse(
                     this.agentImmobilierService.update(this.agentImmobilier));
                 console.log(this.user.email);
-                this.userService.update(this.user).subscribe( res =>{
-
-                    console.log("update" + this.user.email);
+                this.userService.update(this.user).subscribe( res => {
+                    console.log('update' + this.user.email);
                 });
 
             } else {
@@ -152,7 +146,7 @@ export class AgentImmobilierDialogComponent implements OnInit {
                     this.agentImmobilierService.create(this.agentImmobilier));
 
             }
-        })
+        });
 
     }
 

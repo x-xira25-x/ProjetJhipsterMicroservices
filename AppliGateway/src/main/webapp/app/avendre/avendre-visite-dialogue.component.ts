@@ -92,13 +92,13 @@ export class AvendreVisiteDialogueComponent implements OnInit {
                                 console.log('double' + this.visiteDouble);
                                 console.log(this.clientsVisites);
                                 for ( let l =0; l < this.clientsVisites.length; l++) {
-                                  if ( this.clientsVisites[l].idClient === this.client.id && this.clientsVisites[l].visite.id === this.visite.id ){
+                                  if ( this.clientsVisites[l].idClient === this.client.id && this.clientsVisites[l].visite.id === this.visite.id ) {
                                       this.visiteDouble = true;
                                   }
                                 }
                                 console.log('double' + this.visiteDouble);
                                 // Création de la ligne dans la table clientVisite
-                                if ( this.visiteDouble === false ){
+                                if ( this.visiteDouble === false ) {
                                     this.clientVisiteService.create(this.clientVisite).subscribe();
                                     // window.location.reload(false);
                                     this.success = true ;}
