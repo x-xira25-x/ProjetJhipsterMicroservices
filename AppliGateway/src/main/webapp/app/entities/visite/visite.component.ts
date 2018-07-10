@@ -6,8 +6,8 @@ import { JhiEventManager, JhiAlertService } from 'ng-jhipster';
 import { Visite } from './visite.model';
 import { VisiteService } from './visite.service';
 import { Principal } from '../../shared';
-import {ClientVisiteService} from "../client-visite";
-import {ClientVisite} from "../client-visite/client-visite.model";
+import {ClientVisiteService} from '../client-visite';
+import {ClientVisite} from '../client-visite/client-visite.model';
 
 @Component({
     selector: 'jhi-visite',
@@ -31,22 +31,19 @@ visites: Visite[];
         this.visiteService.query().subscribe(
             (res: HttpResponse<Visite[]>) => {
                 this.visites = res.body;
-                for(let i= 0; i < this.visites.length; i ++){
+                for (let i = 0; i < this.visites.length; i ++) {
                     this.clientVisiteService.queryVisiteByIdVisite(this.visites[i].id).subscribe(
                         (res: HttpResponse<ClientVisite[]>) => {
-                            this.visites[i].clientVisites= res.body;
-                        })
+                            this.visites[i].clientVisites = res.body;
+                        });
                 }
-
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
-
-
     }
     ngOnInit() {
         this.loadAll();
-        console.log(this.visites)
+        console.log(this.visites);
         this.principal.identity().then((account) => {
             this.currentAccount = account;
         });

@@ -2,11 +2,10 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { JhiEventManager, JhiAlertService, JhiDataUtils } from 'ng-jhipster';
-
 import { Bien } from './bien.model';
 import { BienService } from './bien.service';
 import { Principal } from '../../shared';
-import {Client, ClientService} from "../client";
+import {Client, ClientService} from '../client';
 
 @Component({
     selector: 'jhi-bien',

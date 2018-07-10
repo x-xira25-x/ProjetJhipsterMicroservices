@@ -42,6 +42,17 @@
                     </a>
                 </li>
             </div>
+
+            <div class="navbar-collapse collapse" iid="bienAvendre-menu" [ngbCollapse]="isNavbarCollapsed" >
+                <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                    <a class="nav-link" routerLink="Presentation" (click)="collapseNavbar()">
+                    <span>
+                        <i class="fa fa-home" aria-hidden="true"></i>
+                        <span >Présentation</span>
+                    </span>
+                    </a>
+                </li>
+            </div>
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *jhiHasAnyAuthority="['ROLE_ADMIN', 'ROLE_AGENTIMMO']"  ngbDropdown class="nav-item dropdown pointer" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
                 <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
