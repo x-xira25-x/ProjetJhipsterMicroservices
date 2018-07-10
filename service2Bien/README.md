@@ -31,8 +31,8 @@ Je lance mes conteneurs Docker grâce à Kitematic.
 
 ## Base de données
 
-mot de passe 1234
-user: root
+- mot de passe : 1234
+- user: root
 
 ### Configuration de la base de données
 
