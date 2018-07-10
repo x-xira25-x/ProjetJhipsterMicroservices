@@ -29,6 +29,8 @@ import {
 } from './layouts';
 import {AvendreModule} from './avendre/avendre.module';
 import {OngletVisitesClientModule} from './onglet-visites-client/onglet-visites-client.module';
+import { PresentationComponent } from './presentation/presentation.component';
+import {PresentationModule} from "./presentation/presentation.module";
 
 @NgModule({
     imports: [
@@ -42,6 +44,7 @@ import {OngletVisitesClientModule} from './onglet-visites-client/onglet-visites-
         AppliGatewayEntityModule,
         AvendreModule,
         OngletVisitesClientModule,
+        PresentationModule,
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [
