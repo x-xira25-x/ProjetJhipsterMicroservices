@@ -2,6 +2,16 @@
 
 Ce package contient le microservices pour les utilisateurs. Il ne contient pas de front-end, c'est-à-dire de partie interface utilisateur.
 
+## Configuration
+
+- Microservices application
+- Jhipster Registry
+- Jwt authentification
+- Base de données: Mysql pour dev et prod
+- Hazelcast implementation pour spring cache abstraction
+- Maven
+- Internalization support
+
 ## Structure
 
 La structure de ce package est la suivante :
