@@ -1,4 +1,4 @@
-# ProjetJhipsterMicroservices
+# Service 1 Utilisateur
 
 Ce package contient le microservices pour les utilisateurs. Il ne contient pas de front-end, c'est-à-dire de partie interface utilisateur.
 
