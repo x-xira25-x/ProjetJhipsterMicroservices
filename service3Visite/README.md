@@ -1,5 +1,6 @@
 # service3Visite
-Ce package contient le microservices pour les visites.
+Ce package contient le microservices pour les visites. Il ne contient pas de front-end, c'est-à-dire de partie interface utilisateur.
+ 
 
 ## Structure
 
