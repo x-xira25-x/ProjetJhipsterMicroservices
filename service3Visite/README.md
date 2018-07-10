@@ -7,6 +7,9 @@ La structure de ce package est la suivante :
 
 ![](https://github.com/x-xira25-x/ProjetJhipsterMicroservices/blob/master/service3Visite/structure_service3.PNG)
 
+
+Mon conteneur Docker contenant la base de données se trouve sur le port: 3309
+
 ## Manuel d'utilisation
 
 Lancer le conteneur Docker:
