@@ -8,7 +8,7 @@ La structure de ce package est la suivante :
 ![](https://github.com/x-xira25-x/ProjetJhipsterMicroservices/blob/master/service2Bien/structure_service2.PNG)
 
 
-Mon conteneur Docker contenant la base de données se trouve sur le port: 3306
+Mon conteneur Docker contenant la base de données se trouve sur le port: 3308
 
 
 ## Manuel d'utilisation
